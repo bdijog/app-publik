@@ -15,6 +15,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class EmployeesTable
 {
@@ -72,7 +73,7 @@ class EmployeesTable
 
                 SelectFilter::make('roles')
                     ->label('Peran')
-                    ->relationship('roles', 'name', fn ($q) => $q->where('guard_name', 'employee'))
+                    ->relationship('roles', 'name', fn (Builder $query) => $query->where('guard_name', 'employee'))
                     ->preload(),
 
                 TernaryFilter::make('is_active')

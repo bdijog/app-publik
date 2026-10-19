@@ -6,6 +6,7 @@ use App\Enums\PaymentStatus;
 use App\Enums\ReportStatus;
 use App\Enums\SampleDecision;
 use App\Enums\TestResultStatus;
+use App\Filament\Pages\OperationalReports;
 use App\Models\CompletionEstimate;
 use App\Models\Customer;
 use App\Models\Employee;
@@ -24,6 +25,7 @@ use App\Models\TestRequestParameter;
 use App\Models\TestResult;
 use Database\Seeders\RolePermissionSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
@@ -56,6 +58,18 @@ class FilamentBackOfficeWorkflowTest extends TestCase
         $response->assertSuccessful();
 
         $response = $this->actingAs($this->admin, 'employee')->get('/admin/catalog/test-parameters');
+        $response->assertSuccessful();
+
+        $response = $this->actingAs($this->admin, 'employee')->get('/admin/catalog/tariffs');
+        $response->assertSuccessful();
+
+        $response = $this->actingAs($this->admin, 'employee')->get('/admin/catalog/completion-estimates');
+        $response->assertSuccessful();
+
+        $response = $this->actingAs($this->admin, 'employee')->get('/admin/catalog/sample-types');
+        $response->assertSuccessful();
+
+        $response = $this->actingAs($this->admin, 'employee')->get('/admin/catalog/service-packages');
         $response->assertSuccessful();
     }
 
@@ -265,6 +279,19 @@ class FilamentBackOfficeWorkflowTest extends TestCase
     public function test_operational_reports_page_is_accessible(): void
     {
         $response = $this->actingAs($this->admin, 'employee')->get('/admin/operational-reports');
+        $response->assertSuccessful();
+
+        Livewire::actingAs($this->admin, 'employee')
+            ->test(OperationalReports::class)
+            ->assertSuccessful()
+            ->call('setPreset', '7_days')
+            ->assertSet('activePreset', '7_days')
+            ->assertSee('Rekapitulasi Operasional');
+    }
+
+    public function test_admin_can_access_employees_resource(): void
+    {
+        $response = $this->actingAs($this->admin, 'employee')->get('/admin/employees');
         $response->assertSuccessful();
     }
 }

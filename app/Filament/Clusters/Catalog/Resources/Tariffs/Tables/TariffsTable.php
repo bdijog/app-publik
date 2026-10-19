@@ -16,6 +16,7 @@ class TariffsTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->defaultSort('effective_from', 'desc')
             ->columns([
                 TextColumn::make('item_name')
                     ->label('Objek Layanan')
@@ -28,7 +29,6 @@ class TariffsTable
                             ->orWhereHas('servicePackage', fn ($q) => $q->where('name', 'ilike', "%{$search}%"))
                             ->orWhereHas('serviceGroup', fn ($q) => $q->where('name', 'ilike', "%{$search}%"));
                     })
-                    ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('category')
