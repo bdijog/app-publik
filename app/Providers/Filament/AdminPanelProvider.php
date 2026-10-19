@@ -11,7 +11,6 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
@@ -30,9 +29,24 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->authGuard('employee')
             ->authPasswordBroker('employees')
+            ->brandName('Balai Labkesmas Ambon')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Teal,
             ])
+            ->resourceEditPageRedirect('index')
+            ->resourceCreatePageRedirect('index')
+            ->sidebarCollapsibleOnDesktop()
+            ->navigationGroups([
+                'Pelayanan & Permohonan',
+                'Penerimaan Sampel',
+                'Pengujian Laboratorium',
+                'Laporan Hasil Uji (LHU)',
+                'Katalog Layanan',
+                'Pengguna & Hak Akses',
+                'Rekapitulasi Operasional',
+                'Audit & Jejak Sistem',
+            ])
+            ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\Filament\Clusters')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
@@ -41,7 +55,6 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
-                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

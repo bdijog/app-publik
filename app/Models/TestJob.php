@@ -16,6 +16,22 @@ class TestJob extends Model
     /** @use HasFactory<TestJobFactory> */
     use HasFactory;
 
+    protected static function booted(): void
+    {
+        static::creating(function (TestJob $job) {
+            if (empty($job->job_number)) {
+                $yearMonth = now()->format('Ym');
+                $latest = static::where('job_number', 'like', "JOB-{$yearMonth}-%")->latest('id')->first();
+                $seq = $latest ? ((int) substr((string) $latest->job_number, -4)) + 1 : 1;
+                $job->job_number = sprintf('JOB-%s-%04d', $yearMonth, $seq);
+            }
+
+            if (empty($job->status)) {
+                $job->status = TestJobStatus::Pending;
+            }
+        });
+    }
+
     protected function casts(): array
     {
         return [

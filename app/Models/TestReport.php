@@ -30,6 +30,25 @@ class TestReport extends Model
     /** @use HasFactory<TestReportFactory> */
     use HasFactory;
 
+    protected static function booted(): void
+    {
+        static::creating(function (TestReport $report) {
+            if (empty($report->report_number)) {
+                $year = date('Y');
+                $count = static::whereYear('created_at', $year)->count() + 1;
+                $report->report_number = sprintf('LHU-%s-%05d', $year, $count);
+            }
+
+            if (empty($report->version)) {
+                $report->version = 1;
+            }
+
+            if (empty($report->status)) {
+                $report->status = ReportStatus::Draft;
+            }
+        });
+    }
+
     protected function casts(): array
     {
         return [

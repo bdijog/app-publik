@@ -17,6 +17,26 @@ class Sample extends Model
     /** @use HasFactory<SampleFactory> */
     use HasFactory;
 
+    protected static function booted(): void
+    {
+        static::creating(function (Sample $sample) {
+            if (empty($sample->sample_code)) {
+                $yearMonth = now()->format('Ym');
+                $latest = static::where('sample_code', 'like', "SMP-{$yearMonth}-%")->latest('id')->first();
+                $seq = $latest ? ((int) substr((string) $latest->sample_code, -4)) + 1 : 1;
+                $sample->sample_code = sprintf('SMP-%s-%04d', $yearMonth, $seq);
+            }
+
+            if (empty($sample->status)) {
+                $sample->status = SampleStatus::Pending;
+            }
+
+            if (empty($sample->quantity)) {
+                $sample->quantity = 1;
+            }
+        });
+    }
+
     protected function casts(): array
     {
         return [
