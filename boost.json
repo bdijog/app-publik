@@ -1,12 +1,20 @@
 {
-    "cloud": true,
+    "agents": [
+        "antigravity"
+    ],
+    "cloud": false,
     "guidelines": true,
+    "packages": [
+        "filament/filament",
+        "spatie/laravel-permission"
+    ],
     "skills": [
         "infer-conventions",
-        "deploying-to-cloud",
         "laravel-best-practices",
         "testing-best-practices",
         "livewire-development",
-        "tailwindcss-development"
+        "tailwindcss-development",
+        "filament-development",
+        "laravel-permission-development"
     ]
 }

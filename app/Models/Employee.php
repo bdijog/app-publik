@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Database\Factories\EmployeeFactory;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasName;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,12 +18,22 @@ use Spatie\Permission\Traits\HasRoles;
 
 #[Fillable(['laboratory_unit_id', 'name', 'email', 'phone', 'nip', 'password', 'is_active', 'last_login_at'])]
 #[Hidden(['password', 'remember_token'])]
-class Employee extends Authenticatable
+class Employee extends Authenticatable implements FilamentUser, HasName
 {
     /** @use HasFactory<EmployeeFactory> */
     use HasFactory, HasRoles, Notifiable, SoftDeletes;
 
     protected string $guard_name = 'employee';
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return (bool) $this->is_active;
+    }
+
+    public function getFilamentName(): string
+    {
+        return $this->name;
+    }
 
     protected function casts(): array
     {
