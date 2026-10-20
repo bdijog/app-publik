@@ -38,7 +38,12 @@ enum RoleEnum: string
     public function defaultPermissions(): array
     {
         return match ($this) {
-            self::Admin => PermissionEnum::cases(),
+            self::Admin => [
+                PermissionEnum::DashboardView,
+                PermissionEnum::UserManage,
+                PermissionEnum::CatalogManage,
+                PermissionEnum::AuditView,
+            ],
             self::ServiceOfficer => [
                 PermissionEnum::DashboardView,
                 PermissionEnum::RequestManage,

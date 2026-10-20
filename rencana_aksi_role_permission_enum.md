@@ -70,19 +70,19 @@
 
 | Permission (CRUD Disatukan) | Nilai String | Administrator (`admin`) | Petugas Pelayanan & Sampel (`service_officer`) | Petugas Laboratorium (`lab_officer`) | Pimpinan (`leader`) | *Sample Receiver (Dedicated)* (`sample_receiver`) |
 |---|---|:---:|:---:|:---:|:---:|:---:|
-| **Dashboard** | `dashboard.view` | ⚡ | ✅ | ✅ | ✅ | ✅ |
-| **Pengguna (CRUD)** | `user.manage` | ⚡ | ❌ | ❌ | ❌ | ❌ |
-| **Katalog (CRUD)** | `catalog.manage` | ⚡ | ❌ | ❌ | ❌ | ❌ |
-| **Permohonan (CRUD)** | `request.manage` | ⚡ | ✅ | ❌ | *(Read via Policy)* | ❌ |
-| **Pembayaran (CRUD)** | `payment.manage` | ⚡ | ✅ | ❌ | ❌ | ❌ |
-| **Penerimaan Sampel (CRUD)** | `sample.manage` | ⚡ | **✅ (Tergabung)** | ❌ | *(Read via Policy)* | ✅ |
-| **SPK / Job (CRUD)** | `job.manage` | ⚡ | ❌ | ✅ | *(Read via Policy)* | ❌ |
-| **Hasil Uji (CRUD)** | `result.manage` | ⚡ | ❌ | ✅ | ❌ | ❌ |
-| **Validasi Hasil (ISO 17025)** | `result.validate` | ⚡ | ❌ | ✅ | ❌ | ❌ |
-| **Revisi Hasil Terkunci** | `result.revise` | ⚡ | ❌ | ✅ | ❌ | ❌ |
-| **LHU & Penyerahan (CRUD)** | `report.manage` | ⚡ | ✅ | ✅ | *(Read via Policy)* | ❌ |
-| **Ekspor Rekap Laporan** | `report.export` | ⚡ | ❌ | ❌ | ✅ | ❌ |
-| **Log Aktivitas & Audit** | `audit.view` | ⚡ | ❌ | ❌ | ✅ | ❌ |
+| **Dashboard** | `dashboard.view` | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Pengguna (CRUD)** | `user.manage` | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Katalog (CRUD)** | `catalog.manage` | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Permohonan (CRUD)** | `request.manage` | ❌ | ✅ | ❌ | *(Read via Policy)* | ❌ |
+| **Pembayaran (CRUD)** | `payment.manage` | ❌ | ✅ | ❌ | ❌ | ❌ |
+| **Penerimaan Sampel (CRUD)** | `sample.manage` | ❌ | **✅ (Tergabung)** | ❌ | *(Read via Policy)* | ✅ |
+| **SPK / Job (CRUD)** | `job.manage` | ❌ | ❌ | ✅ | *(Read via Policy)* | ❌ |
+| **Hasil Uji (CRUD)** | `result.manage` | ❌ | ❌ | ✅ | ❌ | ❌ |
+| **Validasi Hasil (ISO 17025)** | `result.validate` | ❌ | ❌ | ✅ | ❌ | ❌ |
+| **Revisi Hasil Terkunci** | `result.revise` | ❌ | ❌ | ✅ | ❌ | ❌ |
+| **LHU & Penyerahan (CRUD)** | `report.manage` | ❌ | ✅ | ✅ | *(Read via Policy)* | ❌ |
+| **Ekspor Rekap Laporan** | `report.export` | ❌ | ❌ | ❌ | ✅ | ❌ |
+| **Log Aktivitas & Audit** | `audit.view` | ✅ | ❌ | ❌ | ✅ | ❌ |
 
 ---
 
@@ -129,7 +129,12 @@ enum RoleEnum: string
     public function defaultPermissions(): array
     {
         return match ($this) {
-            self::Admin => PermissionEnum::cases(),
+            self::Admin => [
+                PermissionEnum::DashboardView,
+                PermissionEnum::UserManage,
+                PermissionEnum::CatalogManage,
+                PermissionEnum::AuditView,
+            ],
             // Peran Gabungan Pelayanan & Penerimaan Sampel:
             self::ServiceOfficer => [
                 PermissionEnum::DashboardView,

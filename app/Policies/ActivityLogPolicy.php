@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Enums\PermissionEnum;
 use App\Models\ActivityLog;
 use App\Models\Employee;
 
@@ -9,12 +10,12 @@ class ActivityLogPolicy
 {
     public function viewAny(Employee $employee): bool
     {
-        return $employee->can('audit.view');
+        return $employee->can(PermissionEnum::AuditView->value);
     }
 
     public function view(Employee $employee, ActivityLog $activityLog): bool
     {
-        return $employee->can('audit.view');
+        return $employee->can(PermissionEnum::AuditView->value);
     }
 
     public function create(Employee $employee): bool
