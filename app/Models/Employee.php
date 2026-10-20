@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use Database\Factories\EmployeeFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
@@ -33,6 +35,48 @@ class Employee extends Authenticatable implements FilamentUser, HasName
     public function getFilamentName(): string
     {
         return $this->name;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->hasRole(RoleEnum::Admin);
+    }
+
+    public function isServiceOfficer(): bool
+    {
+        return $this->hasRole(RoleEnum::ServiceOfficer);
+    }
+
+    public function isLabOfficer(): bool
+    {
+        return $this->hasRole(RoleEnum::LabOfficer);
+    }
+
+    public function isLeader(): bool
+    {
+        return $this->hasRole(RoleEnum::Leader);
+    }
+
+    public function isSampleReceiver(): bool
+    {
+        return $this->hasRole(RoleEnum::SampleReceiver) || $this->hasRole(RoleEnum::ServiceOfficer);
+    }
+
+    public function canPerform(PermissionEnum $permission): bool
+    {
+        return $this->can($permission->value);
+    }
+
+    /**
+     * @return array<RoleEnum>
+     */
+    public function getRoleEnums(): array
+    {
+        return $this->roles
+            ->map(fn ($role) => RoleEnum::tryFrom($role->name))
+            ->filter()
+            ->values()
+            ->all();
     }
 
     protected function casts(): array
