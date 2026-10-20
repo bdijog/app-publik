@@ -2,6 +2,7 @@
 
 namespace App\Filament\Clusters\Catalog;
 
+use App\Enums\PermissionEnum;
 use BackedEnum;
 use Filament\Clusters\Cluster;
 use Filament\Support\Icons\Heroicon;
@@ -18,4 +19,9 @@ class CatalogCluster extends Cluster
     protected static string|UnitEnum|null $navigationGroup = 'Katalog Layanan';
 
     protected static ?int $navigationSort = 5;
+
+    public static function canAccess(): bool
+    {
+        return auth('employee')->user()?->can(PermissionEnum::CatalogManage->value) ?? false;
+    }
 }

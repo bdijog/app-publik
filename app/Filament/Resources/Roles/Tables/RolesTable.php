@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources\Roles\Tables;
 
+use App\Enums\RoleEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Spatie\Permission\Models\Role;
 
 class RolesTable
 {
@@ -16,9 +18,13 @@ class RolesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama Peran')
-                    ->badge()
-                    ->color('info')
+                    ->label('Nama & Kode Peran')
+                    ->formatStateUsing(fn (string $state): string => RoleEnum::tryFrom($state)?->label() ?? $state)
+                    ->description(function (Role $record): string {
+                        $enum = RoleEnum::tryFrom($record->name);
+
+                        return $enum ? "{$enum->description()} [Kode: {$record->name}]" : "Kode: {$record->name}";
+                    })
                     ->searchable()
                     ->sortable(),
 

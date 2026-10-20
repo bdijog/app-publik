@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Employees\Schemas;
 
+use App\Enums\RoleEnum;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -55,6 +56,7 @@ class EmployeeForm
                             Select::make('roles')
                                 ->label('Peran (Role RBAC)')
                                 ->relationship('roles', 'name', fn ($query) => $query->where('guard_name', 'employee'))
+                                ->getOptionLabelFromRecordUsing(fn ($record) => (RoleEnum::tryFrom($record->name)?->label() ?? $record->name)." ({$record->name})")
                                 ->multiple()
                                 ->preload()
                                 ->searchable()

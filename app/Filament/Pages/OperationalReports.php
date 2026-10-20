@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Enums\PermissionEnum;
 use App\Enums\SampleDecision;
 use App\Models\Payment;
 use App\Models\Sample;
@@ -29,6 +30,11 @@ class OperationalReports extends Page
     protected static ?string $navigationLabel = 'Laporan Operasional';
 
     protected static ?int $navigationSort = 1;
+
+    public static function canAccess(): bool
+    {
+        return auth('employee')->user()?->can(PermissionEnum::ReportExport->value) ?? false;
+    }
 
     public ?string $startDate = null;
 

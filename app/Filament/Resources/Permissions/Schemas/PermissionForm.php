@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Permissions\Schemas;
 
+use App\Enums\PermissionEnum;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
@@ -14,14 +15,16 @@ class PermissionForm
         return $schema
             ->components([
                 Section::make('Informasi Izin / Hak Akses')
-                    ->description('Definisi permission granular untuk pegawai')
+                    ->description('Definisi permission terpadu (CRUD) untuk pegawai (guard employee)')
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('name')
-                                ->label('Nama Izin (contoh: request.create)')
+                                ->label('Kode Izin (contoh: request.manage)')
                                 ->required()
                                 ->maxLength(255)
-                                ->unique(ignoreRecord: true),
+                                ->unique(ignoreRecord: true)
+                                ->datalist(PermissionEnum::values())
+                                ->helperText('Pilih dari daftar standar PermissionEnum atau masukkan kode berformat domain.manage'),
 
                             TextInput::make('guard_name')
                                 ->label('Guard')
