@@ -22,20 +22,20 @@ class TestJobForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('job_number')
-                                ->label('Nomor SPK Pengujian')
+                                ->label(__('Test SPK Number'))
                                 ->placeholder('Dibuat otomatis oleh sistem')
                                 ->disabled()
                                 ->dehydrated(),
 
                             Select::make('sample_id')
-                                ->label('Sampel Fisik')
+                                ->label(__('Physical Sample'))
                                 ->relationship('sample', 'sample_code')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
 
                             Select::make('laboratory_unit_id')
-                                ->label('Instalasi Laboratorium Penanggung Jawab')
+                                ->label(__('Responsible Laboratory Unit'))
                                 ->relationship('laboratoryUnit', 'name')
                                 ->searchable()
                                 ->preload()
@@ -43,7 +43,7 @@ class TestJobForm
                                 ->live(),
 
                             Select::make('assigned_to')
-                                ->label('Analis Pelaksana Ditugaskan')
+                                ->label(__('Assigned Test Analyst'))
                                 ->relationship('assignedTo', 'name', fn (Builder $query, Get $get) => $query->when(
                                     $get('laboratory_unit_id'),
                                     fn ($q, $unitId) => $q->where('laboratory_unit_id', $unitId)
@@ -54,7 +54,7 @@ class TestJobForm
                                 ->placeholder('Pilih analis laboratorium'),
 
                             Select::make('status')
-                                ->label('Status SPK')
+                                ->label(__('SPK Status'))
                                 ->options([
                                     'pending' => 'Menunggu Pengerjaan',
                                     'in_progress' => 'Sedang Dikerjakan',
@@ -66,10 +66,10 @@ class TestJobForm
 
                             Grid::make(2)->schema([
                                 DateTimePicker::make('started_at')
-                                    ->label('Waktu Mulai Pengujian'),
+                                    ->label(__('Testing Start Time')),
 
                                 DateTimePicker::make('completed_at')
-                                    ->label('Waktu Selesai Pengujian'),
+                                    ->label(__('Testing End Time')),
                             ])->columnSpanFull(),
                         ]),
                     ]),

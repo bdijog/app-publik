@@ -24,41 +24,41 @@ class TestReportForm
                         Grid::make(3)
                             ->schema([
                                 TextInput::make('report_number')
-                                    ->label('Nomor LHU')
+                                    ->label(__('LHU Number'))
                                     ->placeholder('Otomatis dibuat sistem (LHU-YYYY-XXXXX)')
                                     ->disabled()
                                     ->dehydrated(false),
 
                                 Select::make('test_request_id')
                                     ->relationship('testRequest', 'request_number')
-                                    ->label('Permohonan / No. FPPS')
+                                    ->label(__('Request / FPPS No.'))
                                     ->searchable()
                                     ->preload()
                                     ->required(),
 
                                 Select::make('report_template_id')
                                     ->relationship('template', 'name')
-                                    ->label('Format Template LHU')
+                                    ->label(__('LHU Template Format'))
                                     ->searchable()
                                     ->preload()
                                     ->required(),
 
                                 TextInput::make('version')
-                                    ->label('Versi Terbitan')
+                                    ->label(__('Published Version'))
                                     ->numeric()
                                     ->default(1)
                                     ->disabled()
                                     ->dehydrated(),
 
                                 Select::make('status')
-                                    ->label('Status Dokumen')
+                                    ->label(__('Document Status'))
                                     ->options(collect(ReportStatus::cases())->pluck('name', 'value'))
                                     ->default(ReportStatus::Draft->value)
                                     ->required(),
 
                                 Select::make('parent_report_id')
                                     ->relationship('parentReport', 'report_number')
-                                    ->label('LHU Acuan (Jika Revisi)')
+                                    ->label(__('Reference LHU (If Revision)'))
                                     ->disabled(),
                             ]),
                     ]),
@@ -70,28 +70,28 @@ class TestReportForm
                             ->schema([
                                 Select::make('verifier_id')
                                     ->relationship('verifier', 'name')
-                                    ->label('Diverifikasi Oleh (Penyelia/PJ Teknis)')
+                                    ->label(__('Verified By (Supervisor/Technical PIC)'))
                                     ->searchable()
                                     ->preload()
                                     ->required(),
 
                                 Select::make('validator_id')
                                     ->relationship('validator', 'name')
-                                    ->label('Divalidasi Oleh (Penanggung Jawab)')
+                                    ->label(__('Validated By (Person in Charge)'))
                                     ->searchable()
                                     ->preload()
                                     ->required(),
 
                                 Select::make('issued_by')
                                     ->relationship('issuer', 'name')
-                                    ->label('Diterbitkan Oleh (Kepala/Manajer Mutu)')
+                                    ->label(__('Issued By (Head/Quality Manager)'))
                                     ->disabled(),
 
                                 DatePicker::make('validated_on')
-                                    ->label('Tanggal Validasi Teknis'),
+                                    ->label(__('Technical Validation Date')),
 
                                 DateTimePicker::make('issued_at')
-                                    ->label('Waktu Penerbitan Resmi')
+                                    ->label(__('Official Issuance Time'))
                                     ->disabled(),
                             ]),
                     ]),
@@ -99,13 +99,13 @@ class TestReportForm
                 Section::make('Kesimpulan Teknis & Berkas PDF')
                     ->schema([
                         Textarea::make('considerations')
-                            ->label('Pertimbangan / Kesimpulan Pemenuhan Standar Baku Mutu')
+                            ->label(__('Quality Standard Compliance Consideration / Conclusion'))
                             ->placeholder('Contoh: Berdasarkan hasil uji parameter fisika & kimia di atas, sampel memenuhi persyaratan air minum sesuai Permenkes...')
                             ->rows(4)
                             ->columnSpanFull(),
 
                         TextInput::make('file_path')
-                            ->label('Path Dokumen PDF Terbitan')
+                            ->label(__('Published PDF Document Path'))
                             ->placeholder('reports/lhu-xxxxx.pdf (dihasilkan saat LHU diterbitkan)')
                             ->disabled()
                             ->columnSpanFull(),

@@ -17,20 +17,20 @@ class CompletionEstimatesTable
         return $table
             ->columns([
                 TextColumn::make('serviceGroup.name')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->placeholder('Semua Kelompok (Default Balai)')
                     ->badge()
                     ->color('primary')
                     ->sortable(),
 
                 TextColumn::make('days')
-                    ->label('Estimasi Penyelesaian')
+                    ->label(__('Estimated Completion'))
                     ->suffix(' Hari Kalender')
                     ->weight('bold')
                     ->sortable(),
 
                 TextColumn::make('start_point')
-                    ->label('Titik Awal')
+                    ->label(__('Start Point'))
                     ->badge()
                     ->color(fn ($state): string => match ($state) {
                         EstimateStartPoint::Payment, 'payment' => 'info',
@@ -45,7 +45,7 @@ class CompletionEstimatesTable
                     }),
 
                 TextColumn::make('effective_from')
-                    ->label('Mulai Berlaku')
+                    ->label(__('Effective From'))
                     ->date('d M Y')
                     ->sortable(),
             ])

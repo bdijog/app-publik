@@ -22,29 +22,29 @@ class DocumentAccessLogForm
                             ->schema([
                                 Select::make('test_report_id')
                                     ->relationship('testReport', 'report_number')
-                                    ->label('Nomor LHU')
+                                    ->label(__('LHU Number'))
                                     ->disabled(),
 
                                 TextInput::make('action')
-                                    ->label('Aktivitas Akses')
+                                    ->label(__('Access Activity'))
                                     ->disabled(),
 
                                 Select::make('customer_id')
                                     ->relationship('customer', 'name')
-                                    ->label('Akun Pelanggan')
+                                    ->label(__('Customer Account'))
                                     ->disabled(),
 
                                 Select::make('employee_id')
                                     ->relationship('employee', 'name')
-                                    ->label('Pegawai Pengakses')
+                                    ->label(__('Accessing Employee'))
                                     ->disabled(),
 
                                 TextInput::make('ip_address')
-                                    ->label('Alamat IP Pengakses')
+                                    ->label(__('Accessor IP Address'))
                                     ->disabled(),
 
                                 DateTimePicker::make('accessed_at')
-                                    ->label('Waktu Akses')
+                                    ->label(__('Access Time'))
                                     ->disabled(),
                             ]),
                     ]),

@@ -18,7 +18,7 @@ class RolesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama & Kode Peran')
+                    ->label(__('Role Name & Code'))
                     ->formatStateUsing(fn (string $state): string => RoleEnum::tryFrom($state)?->label() ?? $state)
                     ->description(function (Role $record): string {
                         $enum = RoleEnum::tryFrom($record->name);
@@ -29,19 +29,19 @@ class RolesTable
                     ->sortable(),
 
                 TextColumn::make('guard_name')
-                    ->label('Guard')
+                    ->label(__('Guard'))
                     ->badge()
                     ->color('gray'),
 
                 TextColumn::make('permissions_count')
                     ->counts('permissions')
-                    ->label('Jumlah Izin')
+                    ->label(__('Permissions Count'))
                     ->badge()
                     ->color('success')
                     ->sortable(),
 
                 TextColumn::make('created_at')
-                    ->label('Dibuat')
+                    ->label(__('Created At'))
                     ->dateTime('d M Y, H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

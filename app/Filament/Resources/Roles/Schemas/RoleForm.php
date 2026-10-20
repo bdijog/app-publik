@@ -21,7 +21,7 @@ class RoleForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('name')
-                                ->label('Nama / Kode Peran')
+                                ->label(__('Role Name / Code'))
                                 ->required()
                                 ->maxLength(255)
                                 ->unique(ignoreRecord: true)
@@ -29,7 +29,7 @@ class RoleForm
                                 ->helperText('Contoh kode peran: '.implode(', ', RoleEnum::values())),
 
                             TextInput::make('guard_name')
-                                ->label('Guard')
+                                ->label(__('Guard'))
                                 ->default('employee')
                                 ->disabled()
                                 ->dehydrated()
@@ -41,7 +41,7 @@ class RoleForm
                     ->description('Pilih izin terpadu (CRUD) yang dimiliki oleh peran ini')
                     ->schema([
                         CheckboxList::make('permissions')
-                            ->label('Daftar Izin Terpadu')
+                            ->label(__('Integrated Permissions List'))
                             ->relationship(
                                 name: 'permissions',
                                 titleAttribute: 'name',

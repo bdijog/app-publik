@@ -27,13 +27,13 @@ class TestRequestForm
                     ->schema([
                         Grid::make(3)->schema([
                             TextInput::make('fpps_number')
-                                ->label('Nomor FPPS')
+                                ->label(__('FPPS Number'))
                                 ->placeholder('Dibuat otomatis oleh sistem')
                                 ->disabled()
                                 ->dehydrated(),
 
                             Select::make('channel')
-                                ->label('Kanal Pendaftaran')
+                                ->label(__('Registration Channel'))
                                 ->options([
                                     'counter' => 'Loket Pelayanan',
                                     'whatsapp' => 'Bantuan WhatsApp',
@@ -43,7 +43,7 @@ class TestRequestForm
                                 ->required(),
 
                             Select::make('customer_id')
-                                ->label('Pelanggan / Pemohon')
+                                ->label(__('Customer / Applicant'))
                                 ->relationship('customer', 'name')
                                 ->searchable()
                                 ->preload()
@@ -52,13 +52,13 @@ class TestRequestForm
 
                         Grid::make(2)->schema([
                             TextInput::make('purpose')
-                                ->label('Tujuan Pemeriksaan')
+                                ->label(__('Examination Purpose'))
                                 ->required()
                                 ->maxLength(255)
                                 ->placeholder('mis. Pengawasan Mutu Lingkungan / Syarat Izin Edar / Penelitian'),
 
                             DateTimePicker::make('registered_at')
-                                ->label('Waktu Registrasi')
+                                ->label(__('Registration Timestamp'))
                                 ->default(now())
                                 ->required(),
                         ]),
@@ -69,7 +69,7 @@ class TestRequestForm
                     ->schema([
                         Grid::make(2)->schema([
                             Select::make('service_group_id')
-                                ->label('Kelompok Layanan')
+                                ->label(__('Service Group'))
                                 ->relationship('serviceGroup', 'name')
                                 ->searchable()
                                 ->preload()
@@ -78,7 +78,7 @@ class TestRequestForm
                                 ->afterStateUpdated(fn (Set $set) => $set('service_package_id', null)),
 
                             Select::make('service_package_id')
-                                ->label('Paket Pemeriksaan (Opsional)')
+                                ->label(__('Examination Package (Optional)'))
                                 ->relationship('servicePackage', 'name', fn (Builder $query, Get $get) => $query->when(
                                     $get('service_group_id'),
                                     fn ($q, $groupId) => $q->where('service_group_id', $groupId)
@@ -91,10 +91,10 @@ class TestRequestForm
 
                         Repeater::make('parameters')
                             ->relationship('parameters')
-                            ->label('Daftar Parameter Uji yang Dipesan')
+                            ->label(__('Ordered Test Parameters List'))
                             ->schema([
                                 Select::make('test_parameter_id')
-                                    ->label('Parameter Uji')
+                                    ->label(__('Test Parameter'))
                                     ->relationship('testParameter', 'name', fn (Builder $query, Get $get) => $query->when(
                                         $get('../../service_group_id'),
                                         fn ($q, $groupId) => $q->where('service_group_id', $groupId)
@@ -115,7 +115,7 @@ class TestRequestForm
                                     }),
 
                                 TextInput::make('price')
-                                    ->label('Harga Snapshot')
+                                    ->label(__('Snapshot Price'))
                                     ->numeric()
                                     ->prefix('Rp')
                                     ->required()
@@ -130,7 +130,7 @@ class TestRequestForm
                             }),
 
                         TextInput::make('total_amount')
-                            ->label('Total Biaya Retribusi')
+                            ->label(__('Total Retribution Fee'))
                             ->numeric()
                             ->prefix('Rp')
                             ->readOnly()
@@ -142,17 +142,17 @@ class TestRequestForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('sampling_location')
-                                ->label('Titik / Lokasi Pengambilan Sampel')
+                                ->label(__('Sampling Point / Location'))
                                 ->placeholder('mis. Kran Dapur Warga / Outlet IPAL Faskes')
                                 ->maxLength(255)
                                 ->nullable(),
 
                             DatePicker::make('sampling_date')
-                                ->label('Tanggal Sampling')
+                                ->label(__('Sampling Date'))
                                 ->nullable(),
 
                             Textarea::make('notes')
-                                ->label('Catatan Permohonan')
+                                ->label(__('Request Notes'))
                                 ->rows(2)
                                 ->nullable()
                                 ->columnSpanFull(),
@@ -164,7 +164,7 @@ class TestRequestForm
                     ->schema([
                         Grid::make(3)->schema([
                             Select::make('status')
-                                ->label('Status Permohonan')
+                                ->label(__('Request Status'))
                                 ->options([
                                     'draft' => 'Draf Permohonan',
                                     'submitted' => 'Menunggu Verifikasi',
@@ -180,7 +180,7 @@ class TestRequestForm
                                 ->required(),
 
                             Select::make('payment_status')
-                                ->label('Status Pembayaran')
+                                ->label(__('Payment Status'))
                                 ->options([
                                     'unpaid' => 'Belum Bayar',
                                     'paid' => 'Lunas',
@@ -190,7 +190,7 @@ class TestRequestForm
                                 ->required(),
 
                             DatePicker::make('estimated_completion_date')
-                                ->label('Estimasi Tanggal Selesai (SLA)')
+                                ->label(__('Estimated Completion Date (SLA)'))
                                 ->nullable(),
                         ]),
                     ]),

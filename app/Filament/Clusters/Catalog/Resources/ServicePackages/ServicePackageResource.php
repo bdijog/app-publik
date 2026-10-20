@@ -23,9 +23,15 @@ class ServicePackageResource extends Resource
 
     protected static ?string $cluster = CatalogCluster::class;
 
-    protected static ?string $modelLabel = 'Paket Pemeriksaan';
+    public static function getModelLabel(): string
+    {
+        return __('Examination Package');
+    }
 
-    protected static ?string $pluralModelLabel = 'Paket Pemeriksaan';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Examination Packages');
+    }
 
     protected static ?int $navigationSort = 3;
 

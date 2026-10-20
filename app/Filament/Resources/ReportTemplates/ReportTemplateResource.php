@@ -23,9 +23,15 @@ class ReportTemplateResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Laporan Hasil Uji (LHU)';
 
-    protected static ?string $modelLabel = 'Template LHU';
+    public static function getModelLabel(): string
+    {
+        return __('Report Template');
+    }
 
-    protected static ?string $pluralModelLabel = 'Template Laporan Hasil Uji';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Test Report Templates');
+    }
 
     protected static ?int $navigationSort = 3;
 

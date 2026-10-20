@@ -23,9 +23,15 @@ class TestReportResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Laporan Hasil Uji (LHU)';
 
-    protected static ?string $modelLabel = 'Laporan Hasil Uji (LHU)';
+    public static function getModelLabel(): string
+    {
+        return __('Test Report (LHU)');
+    }
 
-    protected static ?string $pluralModelLabel = 'Penerbitan LHU';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Test Reports Issuance');
+    }
 
     protected static ?int $navigationSort = 1;
 

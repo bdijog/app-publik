@@ -23,9 +23,15 @@ class SampleTypeResource extends Resource
 
     protected static ?string $cluster = CatalogCluster::class;
 
-    protected static ?string $modelLabel = 'Jenis Sampel';
+    public static function getModelLabel(): string
+    {
+        return __('Sample Type');
+    }
 
-    protected static ?string $pluralModelLabel = 'Jenis Sampel & Persyaratan';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Sample Types & Requirements');
+    }
 
     protected static ?int $navigationSort = 7;
 

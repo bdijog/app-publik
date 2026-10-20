@@ -19,7 +19,7 @@ class PermissionForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('name')
-                                ->label('Kode Izin (contoh: request.manage)')
+                                ->label(__('Permission Code (e.g. request.manage)'))
                                 ->required()
                                 ->maxLength(255)
                                 ->unique(ignoreRecord: true)
@@ -27,7 +27,7 @@ class PermissionForm
                                 ->helperText('Pilih dari daftar standar PermissionEnum atau masukkan kode berformat domain.manage'),
 
                             TextInput::make('guard_name')
-                                ->label('Guard')
+                                ->label(__('Guard'))
                                 ->default('employee')
                                 ->disabled()
                                 ->dehydrated()

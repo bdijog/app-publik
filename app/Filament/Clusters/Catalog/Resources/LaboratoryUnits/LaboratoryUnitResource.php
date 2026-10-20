@@ -23,9 +23,15 @@ class LaboratoryUnitResource extends Resource
 
     protected static ?string $cluster = CatalogCluster::class;
 
-    protected static ?string $modelLabel = 'Instalasi Lab';
+    public static function getModelLabel(): string
+    {
+        return __('Laboratory Unit');
+    }
 
-    protected static ?string $pluralModelLabel = 'Instalasi Laboratorium';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Laboratory Units');
+    }
 
     protected static ?int $navigationSort = 1;
 

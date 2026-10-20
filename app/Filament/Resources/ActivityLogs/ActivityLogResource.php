@@ -21,9 +21,15 @@ class ActivityLogResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Audit & Jejak Sistem';
 
-    protected static ?string $modelLabel = 'Log Aktivitas';
+    public static function getModelLabel(): string
+    {
+        return __('Activity Log');
+    }
 
-    protected static ?string $pluralModelLabel = 'Log Aktivitas Pengguna';
+    public static function getPluralModelLabel(): string
+    {
+        return __('User Activity Logs');
+    }
 
     protected static ?int $navigationSort = 1;
 

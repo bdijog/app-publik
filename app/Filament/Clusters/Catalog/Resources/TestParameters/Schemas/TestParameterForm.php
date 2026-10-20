@@ -22,32 +22,32 @@ class TestParameterForm
                     ->schema([
                         Grid::make(2)->schema([
                             Select::make('service_group_id')
-                                ->label('Kelompok Layanan')
+                                ->label(__('Service Group'))
                                 ->relationship('serviceGroup', 'name')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
 
                             TextInput::make('name')
-                                ->label('Nama Parameter Uji')
+                                ->label(__('Test Parameter Name'))
                                 ->required()
                                 ->maxLength(255)
                                 ->placeholder('mis. pH, Kekeruhan, Timbal (Pb), Angka Kuman'),
 
                             TextInput::make('unit')
-                                ->label('Satuan Baku')
+                                ->label(__('Standard Unit'))
                                 ->maxLength(30)
                                 ->placeholder('mis. mg/L, CFU/mL, NTU, °C')
                                 ->nullable(),
 
                             TextInput::make('method')
-                                ->label('Metode Analisis Baku')
+                                ->label(__('Standard Analysis Method'))
                                 ->maxLength(255)
                                 ->placeholder('mis. SNI 06-6989.11-2004, Spektrofotometri')
                                 ->nullable(),
 
                             Select::make('result_type')
-                                ->label('Tipe Hasil')
+                                ->label(__('Result Type'))
                                 ->options([
                                     'numeric' => 'Angka / Numerik',
                                     'text' => 'Teks / Kualitatif',
@@ -56,7 +56,7 @@ class TestParameterForm
                                 ->live(),
 
                             Toggle::make('is_active')
-                                ->label('Status Aktif')
+                                ->label(__('Active Status'))
                                 ->default(true),
                         ]),
                     ]),
@@ -66,17 +66,17 @@ class TestParameterForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('threshold_min')
-                                ->label('Batas Minimum (Limit Bawah)')
+                                ->label(__('Minimum Limit (Lower Limit)'))
                                 ->numeric()
                                 ->visible(fn (Get $get) => in_array($get('result_type'), ['numeric', ResultType::Numeric->value, ResultType::Numeric])),
 
                             TextInput::make('threshold_max')
-                                ->label('Batas Maksimum (Limit Atas)')
+                                ->label(__('Maximum Limit (Upper Limit)'))
                                 ->numeric()
                                 ->visible(fn (Get $get) => in_array($get('result_type'), ['numeric', ResultType::Numeric->value, ResultType::Numeric])),
 
                             TextInput::make('threshold_text')
-                                ->label('Keterangan Baku Mutu Kualitatif (Teks)')
+                                ->label(__('Qualitative Quality Standard Description (Text)'))
                                 ->placeholder('mis. Negatif / 100 mL, Tidak Berbau, Jernih')
                                 ->maxLength(255)
                                 ->columnSpanFull()

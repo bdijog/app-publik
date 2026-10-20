@@ -20,19 +20,19 @@ class CustomerForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('name')
-                                ->label('Nama Lengkap Pemohon / PIC')
+                                ->label(__('Applicant / PIC Full Name'))
                                 ->required()
                                 ->maxLength(255)
                                 ->placeholder('mis. dr. Hendra Saputra / Budi Santoso'),
 
                             TextInput::make('organization_name')
-                                ->label('Nama Instansi / Perusahaan / Faskes')
+                                ->label(__('Institution / Company / Health Facility Name'))
                                 ->nullable()
                                 ->maxLength(255)
                                 ->placeholder('mis. RSUD Dr. M. Haulussy / PT Tirta Maluku'),
 
                             Select::make('customer_type')
-                                ->label('Kategori Pemohon')
+                                ->label(__('Applicant Category'))
                                 ->options([
                                     'individual' => 'Perorangan',
                                     'organization' => 'Instansi / Perusahaan',
@@ -42,21 +42,21 @@ class CustomerForm
                                 ->required(),
 
                             TextInput::make('phone')
-                                ->label('Nomor Telepon / WhatsApp')
+                                ->label(__('Phone / WhatsApp Number'))
                                 ->tel()
                                 ->required()
                                 ->placeholder('mis. 08123456789')
                                 ->helperText('Nomor ini digunakan pelanggan untuk pencocokan verifikasi unduh LHU'),
 
                             TextInput::make('email')
-                                ->label('Email (Opsional)')
+                                ->label(__('Email (Optional)'))
                                 ->email()
                                 ->nullable()
                                 ->unique(ignoreRecord: true)
                                 ->maxLength(255),
 
                             Textarea::make('address')
-                                ->label('Alamat Lengkap')
+                                ->label(__('Full Address'))
                                 ->rows(3)
                                 ->nullable()
                                 ->columnSpanFull(),

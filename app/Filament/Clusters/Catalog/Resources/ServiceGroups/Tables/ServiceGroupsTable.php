@@ -19,51 +19,51 @@ class ServiceGroupsTable
         return $table
             ->columns([
                 TextColumn::make('code')
-                    ->label('Kode')
+                    ->label(__('Code'))
                     ->badge()
                     ->color('primary')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('name')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('laboratoryUnit.name')
-                    ->label('Instalasi Penanggung Jawab')
+                    ->label(__('Responsible Unit'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
 
                 TextColumn::make('test_parameters_count')
                     ->counts('testParameters')
-                    ->label('Parameter')
+                    ->label(__('Parameter'))
                     ->badge()
                     ->color('gray')
                     ->sortable(),
 
                 TextColumn::make('service_packages_count')
                     ->counts('servicePackages')
-                    ->label('Paket')
+                    ->label(__('Package'))
                     ->badge()
                     ->color('gray')
                     ->sortable(),
 
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean()
                     ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('laboratory_unit_id')
-                    ->label('Instalasi')
+                    ->label(__('Laboratory Unit'))
                     ->relationship('laboratoryUnit', 'name')
                     ->preload(),
 
                 TernaryFilter::make('is_active')
-                    ->label('Status Aktif'),
+                    ->label(__('Active Status')),
             ])
             ->recordActions([
                 EditAction::make(),

@@ -18,19 +18,19 @@ class PermissionsTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Kode Izin')
+                    ->label(__('Permission Code'))
                     ->badge()
                     ->color('warning')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('label')
-                    ->label('Deskripsi Izin')
+                    ->label(__('Permission Description'))
                     ->state(fn (Permission $record): string => PermissionEnum::tryFrom($record->name)?->label() ?? '-')
                     ->searchable(false),
 
                 TextColumn::make('group')
-                    ->label('Klaster Modul')
+                    ->label(__('Module Cluster'))
                     ->state(fn (Permission $record): string => PermissionEnum::tryFrom($record->name)?->group() ?? 'Lainnya')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
@@ -46,19 +46,19 @@ class PermissionsTable
                     ->searchable(false),
 
                 TextColumn::make('guard_name')
-                    ->label('Guard')
+                    ->label(__('Guard'))
                     ->badge()
                     ->color('gray'),
 
                 TextColumn::make('roles_count')
                     ->counts('roles')
-                    ->label('Digunakan di Peran')
+                    ->label(__('Used in Roles'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
 
                 TextColumn::make('created_at')
-                    ->label('Dibuat')
+                    ->label(__('Created At'))
                     ->dateTime('d M Y, H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -23,9 +23,15 @@ class PermissionResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Pengguna & Hak Akses';
 
-    protected static ?string $modelLabel = 'Hak Akses';
+    public static function getModelLabel(): string
+    {
+        return __('Permission');
+    }
 
-    protected static ?string $pluralModelLabel = 'Hak Akses (Permissions)';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Permissions');
+    }
 
     protected static ?int $navigationSort = 3;
 

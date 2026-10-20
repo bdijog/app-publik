@@ -22,7 +22,7 @@ class PaymentForm
                     ->schema([
                         Grid::make(2)->schema([
                             Select::make('test_request_id')
-                                ->label('Nomor FPPS Permohonan')
+                                ->label(__('Request FPPS Number'))
                                 ->relationship('testRequest', 'fpps_number')
                                 ->searchable()
                                 ->preload()
@@ -38,14 +38,14 @@ class PaymentForm
                                 }),
 
                             TextInput::make('amount')
-                                ->label('Jumlah Pembayaran')
+                                ->label(__('Payment Amount'))
                                 ->numeric()
                                 ->prefix('Rp')
                                 ->required()
                                 ->minValue(0),
 
                             Select::make('status')
-                                ->label('Status Pembayaran')
+                                ->label(__('Payment Status'))
                                 ->options([
                                     'unpaid' => 'Belum Bayar',
                                     'paid' => 'Lunas',
@@ -55,7 +55,7 @@ class PaymentForm
                                 ->required(),
 
                             DateTimePicker::make('paid_at')
-                                ->label('Waktu Pembayaran Diterima')
+                                ->label(__('Payment Received Time'))
                                 ->default(now())
                                 ->required(),
                         ]),

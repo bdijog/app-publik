@@ -21,26 +21,26 @@ class ReportTemplateForm
                         Grid::make(3)
                             ->schema([
                                 TextInput::make('name')
-                                    ->label('Nama Template')
+                                    ->label(__('Template Name'))
                                     ->placeholder('Contoh: Template LHU Air Minum & Sanitasi')
                                     ->required()
                                     ->maxLength(255)
                                     ->columnSpan(2),
 
                                 TextInput::make('version')
-                                    ->label('Versi Dokumen')
+                                    ->label(__('Document Version'))
                                     ->placeholder('Contoh: 1.0')
                                     ->required()
                                     ->maxLength(50),
                             ]),
 
                         Toggle::make('is_active')
-                            ->label('Template Aktif')
+                            ->label(__('Active Template'))
                             ->helperText('Hanya template aktif yang dapat digunakan pada penerbitan LHU baru.')
                             ->default(true),
 
                         Textarea::make('content')
-                            ->label('Struktur & Klausul Legal Template')
+                            ->label(__('Template Structure & Legal Clauses'))
                             ->placeholder('Masukkan klausul akreditasi KAN, ketetapan hukum, atau disclaimer teknis...')
                             ->rows(8)
                             ->required()

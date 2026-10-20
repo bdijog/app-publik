@@ -29,34 +29,34 @@ class TestResultsTable
         return $table
             ->columns([
                 TextColumn::make('testJob.job_number')
-                    ->label('Nomor SPK')
+                    ->label(__('SPK Number'))
                     ->badge()
                     ->color('primary')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('testJob.sample.sample_code')
-                    ->label('Kode Sampel')
+                    ->label(__('Sample Code'))
                     ->badge()
                     ->color('info')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('testRequestParameter.testParameter.name')
-                    ->label('Parameter Uji')
+                    ->label(__('Test Parameter'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('result_value')
-                    ->label('Hasil Pengukuran')
+                    ->label(__('Measurement Result'))
                     ->state(fn (TestResult $r): string => $r->value_numeric !== null
                         ? "{$r->value_numeric} {$r->unit}"
                         : ($r->value_text ?? '-'))
                     ->weight('bold'),
 
                 TextColumn::make('threshold_status')
-                    ->label('Status Baku Mutu')
+                    ->label(__('Quality Standard Status'))
                     ->badge()
                     ->state(function (TestResult $r): string {
                         $param = $r->testRequestParameter?->testParameter;
@@ -85,7 +85,7 @@ class TestResultsTable
                     }),
 
                 TextColumn::make('status')
-                    ->label('Status Validasi')
+                    ->label(__('Validation Status'))
                     ->badge()
                     ->color(fn ($state): string => match ($state?->value ?? $state) {
                         'validated', TestResultStatus::Validated => 'success',
@@ -108,18 +108,18 @@ class TestResultsTable
                     }),
 
                 IconColumn::make('is_locked')
-                    ->label('Terkunci')
+                    ->label(__('Locked'))
                     ->boolean()
                     ->sortable(),
 
                 TextColumn::make('analyst.name')
-                    ->label('Analis')
+                    ->label(__('Analyst'))
                     ->placeholder('-')
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('status')
-                    ->label('Status Hasil')
+                    ->label(__('Result Status'))
                     ->options([
                         'draft' => 'Draf Hasil',
                         'submitted' => 'Menunggu Validasi',
@@ -129,7 +129,7 @@ class TestResultsTable
             ])
             ->recordActions([
                 Action::make('submit_validation')
-                    ->label('Kirim Validasi')
+                    ->label(__('Submit for Validation'))
                     ->icon(Heroicon::OutlinedPaperAirplane)
                     ->color('info')
                     ->visible(fn (TestResult $r) => in_array($r->status?->value ?? $r->status, ['draft', 'returned']))
@@ -148,14 +148,14 @@ class TestResultsTable
                     }),
 
                 Action::make('validate_result')
-                    ->label('Validasi')
+                    ->label(__('Validation'))
                     ->icon(Heroicon::OutlinedCheckBadge)
                     ->color('success')
                     ->visible(fn (TestResult $r) => ($r->status?->value ?? $r->status) === 'submitted' && auth('employee')->user()?->can('result.validate'))
                     ->modalHeading(fn (TestResult $r) => 'Validasi Hasil Uji: '.($r->testRequestParameter?->testParameter?->name ?? 'Parameter'))
                     ->form([
                         Select::make('stage')
-                            ->label('Tahapan Validasi')
+                            ->label(__('Validation Stage'))
                             ->options([
                                 'manager_lab' => 'Validasi Manager Teknis / Lab',
                                 'recommendation' => 'Validasi Rekomendasi Teknis',
@@ -164,7 +164,7 @@ class TestResultsTable
                             ->required(),
 
                         Select::make('decision')
-                            ->label('Keputusan')
+                            ->label(__('Decision'))
                             ->options([
                                 'approved' => 'Setujui (Approved)',
                                 'returned' => 'Kembalikan untuk Perbaikan (Returned)',
@@ -174,7 +174,7 @@ class TestResultsTable
                             ->live(),
 
                         Textarea::make('notes')
-                            ->label('Catatan Koreksi / Penjelasan')
+                            ->label(__('Correction Notes / Explanation'))
                             ->required(fn (Get $get) => $get('decision') === 'returned')
                             ->placeholder('Wajib diisi jika hasil dikembalikan kepada analis untuk perbaikan'),
                     ])
@@ -205,7 +205,7 @@ class TestResultsTable
                     }),
 
                 Action::make('revise')
-                    ->label('Koreksi / Revisi')
+                    ->label(__('Correction / Revision'))
                     ->icon(Heroicon::OutlinedArrowPath)
                     ->color('warning')
                     ->visible(fn (TestResult $r) => $r->is_locked && auth('employee')->user()?->can('result.revise'))
@@ -213,16 +213,16 @@ class TestResultsTable
                     ->modalDescription('Setiap perubahan pada hasil yang sudah divalidasi wajib mencantumkan alasan formal untuk jejak audit.')
                     ->form([
                         TextInput::make('new_value_numeric')
-                            ->label('Nilai Baru (Angka / Numerik)')
+                            ->label(__('New Value (Number / Numeric)'))
                             ->numeric()
                             ->default(fn (TestResult $r) => $r->value_numeric),
 
                         TextInput::make('new_value_text')
-                            ->label('Nilai Baru (Kualitatif / Teks)')
+                            ->label(__('New Value (Qualitative / Text)'))
                             ->default(fn (TestResult $r) => $r->value_text),
 
                         Textarea::make('reason')
-                            ->label('Alasan Perubahan / Koreksi')
+                            ->label(__('Change / Correction Reason'))
                             ->required()
                             ->placeholder('Wajib diisi untuk audit trail laboratorium'),
                     ])

@@ -12,7 +12,15 @@ class CatalogCluster extends Cluster
 {
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSquares2x2;
 
-    protected static ?string $navigationLabel = 'Katalog Layanan';
+    public static function getNavigationLabel(): string
+    {
+        return __('Service Catalog');
+    }
+
+    public static function getClusterBreadcrumb(): ?string
+    {
+        return __('Service Catalog');
+    }
 
     protected static ?string $clusterBreadcrumb = 'Katalog';
 

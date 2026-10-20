@@ -21,20 +21,20 @@ class ServicePackageForm
                     ->schema([
                         Grid::make(2)->schema([
                             Select::make('service_group_id')
-                                ->label('Kelompok Layanan')
+                                ->label(__('Service Group'))
                                 ->relationship('serviceGroup', 'name')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
 
                             TextInput::make('name')
-                                ->label('Nama Paket Pemeriksaan')
+                                ->label(__('Examination Package Name'))
                                 ->required()
                                 ->maxLength(255)
                                 ->placeholder('mis. Paket Kimia Air Bersih Standar Permenkes'),
 
                             Toggle::make('is_active')
-                                ->label('Status Aktif')
+                                ->label(__('Active Status'))
                                 ->default(true),
                         ]),
                     ]),
@@ -43,7 +43,7 @@ class ServicePackageForm
                     ->description('Pilih parameter yang tercakup dalam paket pemeriksaan ini')
                     ->schema([
                         CheckboxList::make('parameters')
-                            ->label('Daftar Parameter')
+                            ->label(__('Parameters List'))
                             ->relationship('parameters', 'name')
                             ->columns(3)
                             ->searchable()

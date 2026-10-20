@@ -23,29 +23,29 @@ class ResultRevisionForm
                             ->schema([
                                 Select::make('test_result_id')
                                     ->relationship('testResult.testParameter', 'name')
-                                    ->label('Parameter Pengujian')
+                                    ->label(__('Testing Parameter'))
                                     ->disabled(),
 
                                 Select::make('revised_by')
                                     ->relationship('revisedBy', 'name')
-                                    ->label('Direvisi Oleh')
+                                    ->label(__('Revised By'))
                                     ->disabled(),
 
                                 TextInput::make('old_value')
-                                    ->label('Nilai Lama (Sebelum Revisi)')
+                                    ->label(__('Old Value (Before Revision)'))
                                     ->disabled(),
 
                                 TextInput::make('new_value')
-                                    ->label('Nilai Baru (Setelah Revisi)')
+                                    ->label(__('New Value (After Revision)'))
                                     ->disabled(),
 
                                 Textarea::make('reason')
-                                    ->label('Alasan / Justifikasi Revisi')
+                                    ->label(__('Revision Reason / Justification'))
                                     ->columnSpanFull()
                                     ->disabled(),
 
                                 DateTimePicker::make('created_at')
-                                    ->label('Waktu Pencatatan Revisi')
+                                    ->label(__('Revision Record Time'))
                                     ->disabled(),
                             ]),
                     ]),

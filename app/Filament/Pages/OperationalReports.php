@@ -13,6 +13,7 @@ use App\Models\TestRequest;
 use BackedEnum;
 use Filament\Pages\Page;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use UnitEnum;
@@ -27,7 +28,15 @@ class OperationalReports extends Page
 
     protected static ?string $title = 'Rekapitulasi Operasional Layanan';
 
-    protected static ?string $navigationLabel = 'Laporan Operasional';
+    public static function getNavigationLabel(): string
+    {
+        return __('Operational Reports');
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('Operational Reports');
+    }
 
     protected static ?int $navigationSort = 1;
 

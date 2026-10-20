@@ -20,50 +20,50 @@ class SampleForm
                     ->schema([
                         Grid::make(2)->schema([
                             Select::make('test_request_id')
-                                ->label('Nomor FPPS Permohonan')
+                                ->label(__('Request FPPS Number'))
                                 ->relationship('testRequest', 'fpps_number')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
 
                             Select::make('sample_type_id')
-                                ->label('Kategori / Jenis Sampel')
+                                ->label(__('Sample Category / Type'))
                                 ->relationship('sampleType', 'name')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
 
                             TextInput::make('sample_code')
-                                ->label('Kode Sampel Balai')
+                                ->label(__('Institute Sample Code'))
                                 ->placeholder('Dibuat otomatis oleh sistem')
                                 ->disabled()
                                 ->dehydrated(),
 
                             TextInput::make('sample_name')
-                                ->label('Nama / Uraian Sampel')
+                                ->label(__('Sample Name / Description'))
                                 ->required()
                                 ->maxLength(255)
                                 ->placeholder('mis. Air Baku Reservoir / Makanan Olahan Ikan'),
 
                             TextInput::make('quantity')
-                                ->label('Jumlah / Volume Diserahkan')
+                                ->label(__('Submitted Quantity / Volume'))
                                 ->numeric()
                                 ->required()
                                 ->placeholder('mis. 1000'),
 
                             TextInput::make('unit')
-                                ->label('Satuan')
+                                ->label(__('Unit'))
                                 ->default('mL')
                                 ->required()
                                 ->maxLength(20)
                                 ->placeholder('mis. mL, Gram, Botol'),
 
                             DateTimePicker::make('collected_at')
-                                ->label('Waktu Pengambilan Sampel')
+                                ->label(__('Sample Collection Time'))
                                 ->nullable(),
 
                             Select::make('status')
-                                ->label('Status Sampel')
+                                ->label(__('Sample Status'))
                                 ->options([
                                     'pending' => 'Menunggu Penerimaan',
                                     'accepted' => 'Diterima di Lab',

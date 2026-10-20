@@ -23,38 +23,38 @@ class EmployeeForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('name')
-                                ->label('Nama Lengkap & Gelar')
+                                ->label(__('Full Name & Title'))
                                 ->required()
                                 ->maxLength(255),
 
                             TextInput::make('nip')
-                                ->label('Nomor Induk Pegawai (NIP)')
+                                ->label(__('Employee Identification Number (NIP)'))
                                 ->nullable()
                                 ->unique(ignoreRecord: true)
                                 ->maxLength(30),
 
                             TextInput::make('email')
-                                ->label('Email Dinas (Username Login)')
+                                ->label(__('Official Email (Login Username)'))
                                 ->email()
                                 ->required()
                                 ->unique(ignoreRecord: true)
                                 ->maxLength(255),
 
                             TextInput::make('phone')
-                                ->label('Nomor Telepon / WhatsApp')
+                                ->label(__('Phone / WhatsApp Number'))
                                 ->tel()
                                 ->nullable()
                                 ->maxLength(20),
 
                             Select::make('laboratory_unit_id')
-                                ->label('Unit / Instalasi Penempatan')
+                                ->label(__('Placement Unit / Installation'))
                                 ->relationship('laboratoryUnit', 'name')
                                 ->searchable()
                                 ->preload()
                                 ->nullable(),
 
                             Select::make('roles')
-                                ->label('Peran (Role RBAC)')
+                                ->label(__('Role (RBAC Role)'))
                                 ->relationship('roles', 'name', fn ($query) => $query->where('guard_name', 'employee'))
                                 ->getOptionLabelFromRecordUsing(fn ($record) => (RoleEnum::tryFrom($record->name)?->label() ?? $record->name)." ({$record->name})")
                                 ->multiple()
@@ -69,7 +69,7 @@ class EmployeeForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('password')
-                                ->label('Kata Sandi')
+                                ->label(__('Password'))
                                 ->password()
                                 ->revealable()
                                 ->rule(Password::default())
@@ -81,7 +81,7 @@ class EmployeeForm
                                     : 'Wajib diisi saat membuat akun pegawai baru'),
 
                             Toggle::make('is_active')
-                                ->label('Akun Aktif')
+                                ->label(__('Active Account'))
                                 ->helperText('Pegawai non-aktif tidak dapat masuk ke sistem panel')
                                 ->default(true)
                                 ->inline(false),

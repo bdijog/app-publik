@@ -13,24 +13,24 @@ class ActivityLogsTable
         return $table
             ->columns([
                 TextColumn::make('action')
-                    ->label('Aktivitas / Event')
+                    ->label(__('Activity / Event'))
                     ->badge()
                     ->color('primary')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('causer_type')
-                    ->label('Pelaksana')
+                    ->label(__('Performer'))
                     ->formatStateUsing(fn ($state, $record) => $state ? class_basename($state)." #{$record->causer_id}" : '-')
                     ->searchable(),
 
                 TextColumn::make('subject_type')
-                    ->label('Objek Sasaran')
+                    ->label(__('Target Object'))
                     ->formatStateUsing(fn ($state, $record) => $state ? class_basename($state)." #{$record->subject_id}" : '-')
                     ->searchable(),
 
                 TextColumn::make('created_at')
-                    ->label('Waktu Kejadian')
+                    ->label(__('Event Time'))
                     ->dateTime('d/m/Y H:i:s')
                     ->sortable(),
             ])

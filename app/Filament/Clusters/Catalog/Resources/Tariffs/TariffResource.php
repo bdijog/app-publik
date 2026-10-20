@@ -23,9 +23,15 @@ class TariffResource extends Resource
 
     protected static ?string $cluster = CatalogCluster::class;
 
-    protected static ?string $modelLabel = 'Tarif Layanan';
+    public static function getModelLabel(): string
+    {
+        return __('Service Tariff');
+    }
 
-    protected static ?string $pluralModelLabel = 'Tarif Retribusi Layanan';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Service Retribution Tariffs');
+    }
 
     protected static ?int $navigationSort = 5;
 

@@ -25,30 +25,30 @@ class TestReportsTable
         return $table
             ->columns([
                 TextColumn::make('report_number')
-                    ->label('Nomor LHU')
+                    ->label(__('LHU Number'))
                     ->weight('bold')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('testRequest.request_number')
-                    ->label('No. FPPS')
+                    ->label(__('FPPS No.'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('testRequest.customer.name')
-                    ->label('Pelanggan')
+                    ->label(__('Customer'))
                     ->searchable()
                     ->sortable()
                     ->limit(25),
 
                 TextColumn::make('version')
-                    ->label('Ver')
+                    ->label(__('Ver'))
                     ->badge()
                     ->color('gray')
                     ->formatStateUsing(fn ($state) => "v{$state}"),
 
                 TextColumn::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->badge()
                     ->color(fn (ReportStatus|string|null $state): string => match ($state instanceof ReportStatus ? $state->value : $state) {
                         'draft' => 'gray',
@@ -64,21 +64,21 @@ class TestReportsTable
                     }),
 
                 TextColumn::make('issued_at')
-                    ->label('Waktu Terbit')
+                    ->label(__('Issuance Time'))
                     ->dateTime('d/m/Y H:i')
                     ->placeholder('-')
                     ->sortable(),
 
                 TextColumn::make('handovers_count')
                     ->counts('handovers')
-                    ->label('Penyerahan')
+                    ->label(__('Handover'))
                     ->badge()
                     ->color(fn (int $state): string => $state > 0 ? 'success' : 'gray'),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('status')
-                    ->label('Status LHU')
+                    ->label(__('LHU Status'))
                     ->options([
                         ReportStatus::Draft->value => 'Draf LHU',
                         ReportStatus::Final->value => 'Final / Diterbitkan',
@@ -87,17 +87,17 @@ class TestReportsTable
             ])
             ->recordActions([
                 Action::make('issue_report')
-                    ->label('Terbitkan LHU')
+                    ->label(__('Issue LHU'))
                     ->icon(Heroicon::OutlinedCheckBadge)
                     ->color('success')
                     ->visible(fn (TestReport $record) => $record->status === ReportStatus::Draft)
                     ->schema([
                         Textarea::make('considerations')
-                            ->label('Pertimbangan & Kesimpulan LHU')
+                            ->label(__('LHU Considerations & Conclusions'))
                             ->default(fn (TestReport $record) => $record->considerations)
                             ->required(),
                         DatePicker::make('validated_on')
-                            ->label('Tanggal Validasi Teknis')
+                            ->label(__('Technical Validation Date'))
                             ->default(now()->format('Y-m-d'))
                             ->required(),
                     ])
@@ -123,13 +123,13 @@ class TestReportsTable
                     }),
 
                 Action::make('revise_report')
-                    ->label('Revisi LHU')
+                    ->label(__('LHU Revision'))
                     ->icon(Heroicon::OutlinedArrowPath)
                     ->color('warning')
                     ->visible(fn (TestReport $record) => $record->status === ReportStatus::Final)
                     ->schema([
                         Textarea::make('revision_reason')
-                            ->label('Alasan Revisi LHU')
+                            ->label(__('LHU Revision Reason'))
                             ->placeholder('Jelaskan ralat/koreksi nilai hasil pengujian atau data sampel...')
                             ->required(),
                     ])
@@ -157,20 +157,20 @@ class TestReportsTable
                     }),
 
                 Action::make('handover')
-                    ->label('Serahkan LHU')
+                    ->label(__('Hand Over LHU'))
                     ->icon(Heroicon::OutlinedTruck)
                     ->color('info')
                     ->visible(fn (TestReport $record) => $record->status === ReportStatus::Final)
                     ->schema([
                         TextInput::make('received_by_name')
-                            ->label('Nama Penerima / Kuasa Pengambil')
+                            ->label(__('Recipient / Authorized Pickup Name'))
                             ->required(),
                         DateTimePicker::make('handed_at')
-                            ->label('Waktu Penyerahan')
+                            ->label(__('Handover Time'))
                             ->default(now())
                             ->required(),
                         Textarea::make('notes')
-                            ->label('Catatan Penyerahan / No. Resi Ekspedisi')
+                            ->label(__('Handover Notes / Expedition Tracking No.'))
                             ->placeholder('Contoh: Diambil langsung oleh ybs / Dikirim via JNE No. Resi...'),
                     ])
                     ->action(function (TestReport $record, array $data): void {

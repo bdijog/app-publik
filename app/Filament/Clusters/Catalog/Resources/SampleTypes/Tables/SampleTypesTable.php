@@ -17,30 +17,30 @@ class SampleTypesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Jenis Sampel')
+                    ->label(__('Sample Type'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('serviceGroup.name')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->badge()
                     ->color('primary')
                     ->sortable(),
 
                 TextColumn::make('min_volume')
-                    ->label('Vol. Min')
+                    ->label(__('Min. Vol'))
                     ->placeholder('-')
                     ->sortable(),
 
                 TextColumn::make('container_requirement')
-                    ->label('Syarat Wadah')
+                    ->label(__('Container Requirements Checklist'))
                     ->limit(35)
                     ->placeholder('-'),
             ])
             ->filters([
                 SelectFilter::make('service_group_id')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->relationship('serviceGroup', 'name')
                     ->preload(),
             ])

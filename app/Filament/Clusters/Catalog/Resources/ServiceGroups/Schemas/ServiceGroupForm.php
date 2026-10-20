@@ -21,34 +21,34 @@ class ServiceGroupForm
                     ->schema([
                         Grid::make(2)->schema([
                             Select::make('laboratory_unit_id')
-                                ->label('Instalasi Penanggung Jawab')
+                                ->label(__('Responsible Unit'))
                                 ->relationship('laboratoryUnit', 'name')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
 
                             TextInput::make('code')
-                                ->label('Kode Kelompok Layanan')
+                                ->label(__('Service Group Code'))
                                 ->required()
                                 ->unique(ignoreRecord: true)
                                 ->maxLength(20)
                                 ->placeholder('mis. AIR-LAUT, MAKANAN'),
 
                             TextInput::make('name')
-                                ->label('Nama Kelompok Layanan')
+                                ->label(__('Service Group Name'))
                                 ->required()
                                 ->maxLength(255)
                                 ->columnSpanFull()
                                 ->placeholder('mis. Pengujian Kualitas Air Laut'),
 
                             Textarea::make('description')
-                                ->label('Deskripsi Layanan')
+                                ->label(__('Service Description'))
                                 ->rows(3)
                                 ->nullable()
                                 ->columnSpanFull(),
 
                             Toggle::make('is_active')
-                                ->label('Status Aktif')
+                                ->label(__('Active Status'))
                                 ->default(true),
                         ]),
                     ]),

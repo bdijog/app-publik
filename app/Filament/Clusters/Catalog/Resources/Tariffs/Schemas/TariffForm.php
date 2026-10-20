@@ -21,7 +21,7 @@ class TariffForm
                     ->description('Tentukan objek yang dikenakan tarif (parameter, paket, atau kelompok layanan)')
                     ->schema([
                         Select::make('target_type')
-                            ->label('Tingkat Objek Tarif')
+                            ->label(__('Tariff Object Level'))
                             ->options([
                                 'parameter' => 'Per Parameter Uji',
                                 'package' => 'Per Paket Layanan',
@@ -48,7 +48,7 @@ class TariffForm
 
                         Grid::make(1)->schema([
                             Select::make('test_parameter_id')
-                                ->label('Parameter Uji')
+                                ->label(__('Test Parameter'))
                                 ->relationship('testParameter', 'name')
                                 ->searchable()
                                 ->preload()
@@ -56,7 +56,7 @@ class TariffForm
                                 ->required(fn (Get $get) => $get('target_type') === 'parameter'),
 
                             Select::make('service_package_id')
-                                ->label('Paket Pemeriksaan')
+                                ->label(__('Examination Package'))
                                 ->relationship('servicePackage', 'name')
                                 ->searchable()
                                 ->preload()
@@ -64,7 +64,7 @@ class TariffForm
                                 ->required(fn (Get $get) => $get('target_type') === 'package'),
 
                             Select::make('service_group_id')
-                                ->label('Kelompok Layanan')
+                                ->label(__('Service Group'))
                                 ->relationship('serviceGroup', 'name')
                                 ->searchable()
                                 ->preload()
@@ -78,7 +78,7 @@ class TariffForm
                     ->schema([
                         Grid::make(3)->schema([
                             TextInput::make('amount')
-                                ->label('Nominal Tarif')
+                                ->label(__('Tariff Amount'))
                                 ->numeric()
                                 ->prefix('Rp')
                                 ->required()
@@ -86,12 +86,12 @@ class TariffForm
                                 ->placeholder('mis. 50000'),
 
                             DatePicker::make('effective_from')
-                                ->label('Berlaku Mulai')
+                                ->label(__('Valid From'))
                                 ->default(now())
                                 ->required(),
 
                             DatePicker::make('effective_until')
-                                ->label('Berlaku Sampai')
+                                ->label(__('Valid Until'))
                                 ->nullable()
                                 ->helperText('Kosongkan bila masih berlaku saat ini'),
                         ]),

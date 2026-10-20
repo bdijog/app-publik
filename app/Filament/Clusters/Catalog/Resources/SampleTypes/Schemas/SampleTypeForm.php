@@ -20,31 +20,31 @@ class SampleTypeForm
                     ->schema([
                         Grid::make(2)->schema([
                             Select::make('service_group_id')
-                                ->label('Kelompok Layanan')
+                                ->label(__('Service Group'))
                                 ->relationship('serviceGroup', 'name')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
 
                             TextInput::make('name')
-                                ->label('Nama Jenis Sampel')
+                                ->label(__('Sample Type Name'))
                                 ->required()
                                 ->maxLength(255)
                                 ->placeholder('mis. Air Sumur Gali, Makanan Siap Saji, Usap Alat'),
 
                             TextInput::make('min_volume')
-                                ->label('Volume / Bobot Minimum')
+                                ->label(__('Minimum Volume / Weight'))
                                 ->numeric()
                                 ->placeholder('mis. 500')
                                 ->helperText('Volume minimum yang harus dipenuhi saat penerimaan sampel fisik'),
 
                             TextInput::make('container_requirement')
-                                ->label('Persyaratan Wadah')
+                                ->label(__('Container Requirements'))
                                 ->maxLength(255)
                                 ->placeholder('mis. Botol Gelap Steril, Coolbox 4°C, Plastik Ziplock'),
 
                             Textarea::make('requirements')
-                                ->label('Instruksi / Persyaratan Khusus Lainnya')
+                                ->label(__('Special Instructions / Other Requirements'))
                                 ->rows(3)
                                 ->columnSpanFull()
                                 ->placeholder('mis. Wajib disimpan pada suhu 2-8°C, diantar maksimal 24 jam pasca sampling'),

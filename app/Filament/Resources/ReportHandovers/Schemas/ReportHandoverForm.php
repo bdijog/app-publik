@@ -23,30 +23,30 @@ class ReportHandoverForm
                             ->schema([
                                 Select::make('test_report_id')
                                     ->relationship('testReport', 'report_number')
-                                    ->label('Nomor LHU')
+                                    ->label(__('LHU Number'))
                                     ->searchable()
                                     ->preload()
                                     ->required(),
 
                                 Select::make('handed_by')
                                     ->relationship('handedBy', 'name')
-                                    ->label('Petugas Penyerah (Front Office)')
+                                    ->label(__('Handover Officer (Front Office)'))
                                     ->default(fn () => auth()->id())
                                     ->required(),
 
                                 TextInput::make('received_by_name')
-                                    ->label('Nama Penerima / Kuasa Pengambil')
+                                    ->label(__('Recipient / Authorized Pickup Name'))
                                     ->placeholder('Nama lengkap orang yang menerima LHU')
                                     ->required()
                                     ->maxLength(255),
 
                                 DateTimePicker::make('handed_at')
-                                    ->label('Waktu Penyerahan')
+                                    ->label(__('Handover Time'))
                                     ->default(now())
                                     ->required(),
 
                                 Textarea::make('notes')
-                                    ->label('Catatan Penyerahan / Ekspedisi')
+                                    ->label(__('Handover Notes / Expedition'))
                                     ->placeholder('Misal: Diambil langsung dan menandatangani buku ekspedisi / Dikirim kurir...')
                                     ->columnSpanFull(),
                             ]),

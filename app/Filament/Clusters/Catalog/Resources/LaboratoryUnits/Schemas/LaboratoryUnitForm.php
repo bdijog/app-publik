@@ -18,14 +18,14 @@ class LaboratoryUnitForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('code')
-                                ->label('Kode Instalasi')
+                                ->label(__('Unit Code'))
                                 ->required()
                                 ->unique(ignoreRecord: true)
                                 ->maxLength(20)
                                 ->placeholder('mis. LAB-KIM, LAB-MIKRO'),
 
                             TextInput::make('name')
-                                ->label('Nama Instalasi / Unit')
+                                ->label(__('Unit / Installation Name'))
                                 ->required()
                                 ->maxLength(255)
                                 ->placeholder('mis. Instalasi Pengujian Kimia'),

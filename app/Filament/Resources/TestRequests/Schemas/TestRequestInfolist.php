@@ -18,37 +18,37 @@ class TestRequestInfolist
                     ->schema([
                         Grid::make(3)->schema([
                             TextEntry::make('fpps_number')
-                                ->label('Nomor FPPS')
+                                ->label(__('FPPS Number'))
                                 ->badge()
                                 ->color('primary')
                                 ->copyable(),
 
                             TextEntry::make('customer.name')
-                                ->label('Nama Pemohon'),
+                                ->label(__('Applicant Name')),
 
                             TextEntry::make('customer.organization_name')
-                                ->label('Instansi / Faskes')
+                                ->label(__('Institution / Health Facility'))
                                 ->placeholder('-'),
 
                             TextEntry::make('customer.phone')
-                                ->label('Kontak WhatsApp'),
+                                ->label(__('WhatsApp Contact')),
 
                             TextEntry::make('serviceGroup.name')
-                                ->label('Kelompok Layanan')
+                                ->label(__('Service Group'))
                                 ->badge()
                                 ->color('info'),
 
                             TextEntry::make('servicePackage.name')
-                                ->label('Paket Layanan')
+                                ->label(__('Service Package'))
                                 ->placeholder('-'),
                         ]),
 
                         Grid::make(2)->schema([
                             TextEntry::make('purpose')
-                                ->label('Tujuan Pengujian'),
+                                ->label(__('Testing Purpose')),
 
                             TextEntry::make('channel')
-                                ->label('Kanal Pendaftaran')
+                                ->label(__('Registration Channel'))
                                 ->badge(),
                         ]),
                     ]),
@@ -57,29 +57,29 @@ class TestRequestInfolist
                     ->schema([
                         Grid::make(3)->schema([
                             TextEntry::make('total_amount')
-                                ->label('Total Biaya Retribusi')
+                                ->label(__('Total Retribution Fee'))
                                 ->money('IDR', locale: 'id_ID')
                                 ->weight('bold'),
 
                             TextEntry::make('payment_status')
-                                ->label('Status Pembayaran')
+                                ->label(__('Payment Status'))
                                 ->badge(),
 
                             TextEntry::make('status')
-                                ->label('Status Alur')
+                                ->label(__('Workflow Status'))
                                 ->badge(),
 
                             TextEntry::make('estimated_completion_date')
-                                ->label('Estimasi Selesai (SLA)')
+                                ->label(__('Estimated Completion (SLA)'))
                                 ->date('d F Y')
                                 ->placeholder('-'),
 
                             TextEntry::make('registered_at')
-                                ->label('Waktu Registrasi')
+                                ->label(__('Registration Timestamp'))
                                 ->dateTime('d F Y, H:i'),
 
                             TextEntry::make('creator.name')
-                                ->label('Petugas Pendaftar')
+                                ->label(__('Registration Officer'))
                                 ->placeholder('Didaftarkan Mandiri (Online)'),
                         ]),
                     ]),
@@ -88,16 +88,16 @@ class TestRequestInfolist
                     ->schema([
                         Grid::make(2)->schema([
                             TextEntry::make('sampling_location')
-                                ->label('Titik / Lokasi Sampling')
+                                ->label(__('Sampling Point / Site'))
                                 ->placeholder('-'),
 
                             TextEntry::make('sampling_date')
-                                ->label('Tanggal Sampling')
+                                ->label(__('Sampling Date'))
                                 ->date('d F Y')
                                 ->placeholder('-'),
 
                             TextEntry::make('notes')
-                                ->label('Catatan Tambahan')
+                                ->label(__('Additional Notes'))
                                 ->placeholder('-')
                                 ->columnSpanFull(),
                         ]),

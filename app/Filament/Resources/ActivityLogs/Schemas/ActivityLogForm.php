@@ -21,34 +21,34 @@ class ActivityLogForm
                         Grid::make(3)
                             ->schema([
                                 TextInput::make('action')
-                                    ->label('Nama Aksi / Event')
+                                    ->label(__('Action / Event Name'))
                                     ->disabled(),
 
                                 TextInput::make('causer_type')
-                                    ->label('Tipe Pelaksana')
+                                    ->label(__('Performer Type'))
                                     ->formatStateUsing(fn ($state) => class_basename($state))
                                     ->disabled(),
 
                                 TextInput::make('causer_id')
-                                    ->label('ID Pelaksana')
+                                    ->label(__('Performer ID'))
                                     ->disabled(),
 
                                 TextInput::make('subject_type')
-                                    ->label('Tipe Subjek')
+                                    ->label(__('Subject Type'))
                                     ->formatStateUsing(fn ($state) => class_basename($state))
                                     ->disabled(),
 
                                 TextInput::make('subject_id')
-                                    ->label('ID Subjek')
+                                    ->label(__('Subject ID'))
                                     ->disabled(),
 
                                 DateTimePicker::make('created_at')
-                                    ->label('Waktu Kejadian')
+                                    ->label(__('Event Time'))
                                     ->disabled(),
                             ]),
 
                         KeyValue::make('properties')
-                            ->label('Metadata & Parameter Properti (JSON)')
+                            ->label(__('Metadata & Property Parameters (JSON)'))
                             ->columnSpanFull()
                             ->disabled(),
                     ]),

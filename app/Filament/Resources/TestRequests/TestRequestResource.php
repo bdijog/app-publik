@@ -27,9 +27,15 @@ class TestRequestResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Pelayanan & Permohonan';
 
-    protected static ?string $modelLabel = 'Permohonan Pengujian';
+    public static function getModelLabel(): string
+    {
+        return __('Test Request');
+    }
 
-    protected static ?string $pluralModelLabel = 'Permohonan Pengujian (FPPS)';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Test Requests (FPPS)');
+    }
 
     protected static ?int $navigationSort = 1;
 

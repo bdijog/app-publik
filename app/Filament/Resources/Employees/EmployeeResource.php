@@ -25,9 +25,15 @@ class EmployeeResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Pengguna & Hak Akses';
 
-    protected static ?string $modelLabel = 'Pegawai';
+    public static function getModelLabel(): string
+    {
+        return __('Employee');
+    }
 
-    protected static ?string $pluralModelLabel = 'Pegawai Balai';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Institute Employees');
+    }
 
     protected static ?int $navigationSort = 1;
 

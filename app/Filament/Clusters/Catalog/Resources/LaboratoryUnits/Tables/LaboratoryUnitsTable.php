@@ -16,28 +16,28 @@ class LaboratoryUnitsTable
         return $table
             ->columns([
                 TextColumn::make('code')
-                    ->label('Kode Instalasi')
+                    ->label(__('Unit Code'))
                     ->badge()
                     ->color('primary')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('name')
-                    ->label('Nama Instalasi')
+                    ->label(__('Unit Name'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('service_groups_count')
                     ->counts('serviceGroups')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
 
                 TextColumn::make('employees_count')
                     ->counts('employees')
-                    ->label('Pegawai')
+                    ->label(__('Employee'))
                     ->badge()
                     ->color('gray')
                     ->sortable(),

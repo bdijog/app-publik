@@ -21,9 +21,15 @@ class ResultRevisionResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Pengujian Laboratorium';
 
-    protected static ?string $modelLabel = 'Riwayat Revisi Hasil';
+    public static function getModelLabel(): string
+    {
+        return __('Result Revision History');
+    }
 
-    protected static ?string $pluralModelLabel = 'Riwayat Revisi Hasil Uji';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Test Result Revisions');
+    }
 
     protected static ?int $navigationSort = 3;
 

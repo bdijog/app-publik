@@ -18,7 +18,7 @@ class TestJobsTable
         return $table
             ->columns([
                 TextColumn::make('job_number')
-                    ->label('Nomor SPK')
+                    ->label(__('SPK Number'))
                     ->badge()
                     ->color('primary')
                     ->searchable()
@@ -26,30 +26,30 @@ class TestJobsTable
                     ->copyable(),
 
                 TextColumn::make('sample.sample_code')
-                    ->label('Kode Sampel')
+                    ->label(__('Sample Code'))
                     ->badge()
                     ->color('info')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('sample.sample_name')
-                    ->label('Nama Sampel')
+                    ->label(__('Sample Name'))
                     ->searchable()
                     ->weight('bold'),
 
                 TextColumn::make('laboratoryUnit.name')
-                    ->label('Instalasi')
+                    ->label(__('Laboratory Unit'))
                     ->badge()
                     ->color('gray')
                     ->sortable(),
 
                 TextColumn::make('assignedTo.name')
-                    ->label('Analis Pelaksana')
+                    ->label(__('Assigned Analyst'))
                     ->placeholder('Belum Ditugaskan')
                     ->sortable(),
 
                 TextColumn::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->badge()
                     ->color(fn ($state): string => match ($state?->value ?? $state) {
                         'completed', TestJobStatus::Completed => 'success',
@@ -72,25 +72,25 @@ class TestJobsTable
                     }),
 
                 TextColumn::make('started_at')
-                    ->label('Mulai Uji')
+                    ->label(__('Start Testing'))
                     ->dateTime('d M Y, H:i')
                     ->placeholder('-')
                     ->sortable(),
 
                 TextColumn::make('completed_at')
-                    ->label('Selesai Uji')
+                    ->label(__('Testing Completed'))
                     ->dateTime('d M Y, H:i')
                     ->placeholder('-')
                     ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('laboratory_unit_id')
-                    ->label('Instalasi')
+                    ->label(__('Laboratory Unit'))
                     ->relationship('laboratoryUnit', 'name')
                     ->preload(),
 
                 SelectFilter::make('status')
-                    ->label('Status SPK')
+                    ->label(__('SPK Status'))
                     ->options([
                         'pending' => 'Menunggu Pengerjaan',
                         'in_progress' => 'Sedang Dikerjakan',

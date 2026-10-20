@@ -25,9 +25,15 @@ class CustomerResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Pelayanan & Permohonan';
 
-    protected static ?string $modelLabel = 'Pelanggan';
+    public static function getModelLabel(): string
+    {
+        return __('Customer');
+    }
 
-    protected static ?string $pluralModelLabel = 'Data Pelanggan';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Customers');
+    }
 
     protected static ?int $navigationSort = 3;
 

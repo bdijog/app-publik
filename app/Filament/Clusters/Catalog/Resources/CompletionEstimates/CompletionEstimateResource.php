@@ -23,9 +23,15 @@ class CompletionEstimateResource extends Resource
 
     protected static ?string $cluster = CatalogCluster::class;
 
-    protected static ?string $modelLabel = 'Estimasi Selesai (SLA)';
+    public static function getModelLabel(): string
+    {
+        return __('Completion Estimate (SLA)');
+    }
 
-    protected static ?string $pluralModelLabel = 'Estimasi Waktu Selesai (SLA)';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Completion Estimates (SLA)');
+    }
 
     protected static ?int $navigationSort = 6;
 

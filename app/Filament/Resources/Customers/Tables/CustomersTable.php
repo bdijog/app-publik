@@ -18,19 +18,19 @@ class CustomersTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama Pemohon')
+                    ->label(__('Applicant Name'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('organization_name')
-                    ->label('Instansi / Faskes')
+                    ->label(__('Institution / Health Facility'))
                     ->placeholder('-')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('customer_type')
-                    ->label('Kategori')
+                    ->label(__('Category'))
                     ->badge()
                     ->formatStateUsing(function ($state): string {
                         if ($state instanceof CustomerType) {
@@ -52,25 +52,25 @@ class CustomersTable
                     }),
 
                 TextColumn::make('phone')
-                    ->label('Nomor Telepon')
+                    ->label(__('Phone Number'))
                     ->searchable(),
 
                 TextColumn::make('test_requests_count')
                     ->counts('testRequests')
-                    ->label('Total Permohonan')
+                    ->label(__('Total Requests'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
 
                 TextColumn::make('created_at')
-                    ->label('Terdaftar')
+                    ->label(__('Registered'))
                     ->date('d M Y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('customer_type')
-                    ->label('Kategori Pemohon')
+                    ->label(__('Applicant Category'))
                     ->options([
                         'individual' => 'Perorangan',
                         'organization' => 'Instansi / Perusahaan',

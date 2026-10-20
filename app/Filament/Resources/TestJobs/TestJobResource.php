@@ -23,9 +23,15 @@ class TestJobResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Pengujian Laboratorium';
 
-    protected static ?string $modelLabel = 'Perintah Kerja (SPK)';
+    public static function getModelLabel(): string
+    {
+        return __('Work Order (SPK)');
+    }
 
-    protected static ?string $pluralModelLabel = 'Perintah Kerja Pengujian';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Test Work Orders');
+    }
 
     protected static ?int $navigationSort = 1;
 

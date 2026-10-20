@@ -13,36 +13,36 @@ class ResultRevisionsTable
         return $table
             ->columns([
                 TextColumn::make('testResult.testJob.job_number')
-                    ->label('No. SPK')
+                    ->label(__('SPK No.'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('testResult.testParameter.name')
-                    ->label('Parameter')
+                    ->label(__('Parameter'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('old_value')
-                    ->label('Nilai Lama')
+                    ->label(__('Old Value'))
                     ->badge()
                     ->color('gray'),
 
                 TextColumn::make('new_value')
-                    ->label('Nilai Baru')
+                    ->label(__('New Value'))
                     ->badge()
                     ->color('warning'),
 
                 TextColumn::make('reason')
-                    ->label('Alasan Revisi')
+                    ->label(__('Revision Reason'))
                     ->limit(40)
                     ->tooltip(fn ($record) => $record->reason),
 
                 TextColumn::make('revisedBy.name')
-                    ->label('Direvisi Oleh')
+                    ->label(__('Revised By'))
                     ->sortable(),
 
                 TextColumn::make('created_at')
-                    ->label('Waktu Revisi')
+                    ->label(__('Revision Time'))
                     ->dateTime('d/m/Y H:i')
                     ->sortable(),
             ])

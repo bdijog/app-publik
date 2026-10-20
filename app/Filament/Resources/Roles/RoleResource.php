@@ -23,9 +23,15 @@ class RoleResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Pengguna & Hak Akses';
 
-    protected static ?string $modelLabel = 'Peran';
+    public static function getModelLabel(): string
+    {
+        return __('Role');
+    }
 
-    protected static ?string $pluralModelLabel = 'Peran Pegawai (Roles)';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Roles');
+    }
 
     protected static ?int $navigationSort = 2;
 

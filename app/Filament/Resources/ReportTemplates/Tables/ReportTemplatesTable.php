@@ -16,34 +16,34 @@ class ReportTemplatesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama Template')
+                    ->label(__('Template Name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('version')
-                    ->label('Versi')
+                    ->label(__('Version'))
                     ->badge(),
 
                 IconColumn::make('is_active')
-                    ->label('Status Aktif')
+                    ->label(__('Active Status'))
                     ->boolean()
                     ->sortable(),
 
                 TextColumn::make('test_reports_count')
                     ->counts('testReports')
-                    ->label('Total LHU Terbit')
+                    ->label(__('Total Issued LHU'))
                     ->badge()
                     ->color('gray'),
 
                 TextColumn::make('updated_at')
-                    ->label('Pembaruan Terakhir')
+                    ->label(__('Last Update'))
                     ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 TernaryFilter::make('is_active')
-                    ->label('Status Aktif'),
+                    ->label(__('Active Status')),
             ])
             ->recordActions([
                 EditAction::make(),

@@ -23,9 +23,15 @@ class ReportHandoverResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Laporan Hasil Uji (LHU)';
 
-    protected static ?string $modelLabel = 'Penyerahan LHU';
+    public static function getModelLabel(): string
+    {
+        return __('Report Handover');
+    }
 
-    protected static ?string $pluralModelLabel = 'Penyerahan LHU ke Pelanggan';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Report Handovers');
+    }
 
     protected static ?int $navigationSort = 2;
 

@@ -14,33 +14,33 @@ class ReportHandoversTable
         return $table
             ->columns([
                 TextColumn::make('testReport.report_number')
-                    ->label('Nomor LHU')
+                    ->label(__('LHU Number'))
                     ->weight('bold')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('testReport.testRequest.customer.name')
-                    ->label('Pelanggan')
+                    ->label(__('Customer'))
                     ->searchable()
                     ->sortable()
                     ->limit(25),
 
                 TextColumn::make('received_by_name')
-                    ->label('Nama Penerima')
+                    ->label(__('Recipient Name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('handedBy.name')
-                    ->label('Petugas Penyerah')
+                    ->label(__('Handover Officer'))
                     ->sortable(),
 
                 TextColumn::make('handed_at')
-                    ->label('Waktu Penyerahan')
+                    ->label(__('Handover Time'))
                     ->dateTime('d/m/Y H:i')
                     ->sortable(),
 
                 TextColumn::make('notes')
-                    ->label('Catatan / Resi')
+                    ->label(__('Notes / Receipt No.'))
                     ->limit(35)
                     ->tooltip(fn ($record) => $record->notes),
             ])

@@ -19,37 +19,37 @@ class ServicePackagesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama Paket')
+                    ->label(__('Package Name'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('serviceGroup.name')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->badge()
                     ->color('primary')
                     ->sortable(),
 
                 TextColumn::make('parameters_count')
                     ->counts('parameters')
-                    ->label('Jumlah Parameter')
+                    ->label(__('Parameters Count'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
 
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean()
                     ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('service_group_id')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->relationship('serviceGroup', 'name')
                     ->preload(),
 
                 TernaryFilter::make('is_active')
-                    ->label('Status Aktif'),
+                    ->label(__('Active Status')),
             ])
             ->recordActions([
                 EditAction::make(),

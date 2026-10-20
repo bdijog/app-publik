@@ -19,7 +19,7 @@ class TariffsTable
             ->defaultSort('effective_from', 'desc')
             ->columns([
                 TextColumn::make('item_name')
-                    ->label('Objek Layanan')
+                    ->label(__('Service Object'))
                     ->state(fn ($record): string => $record->testParameter?->name
                         ?? $record->servicePackage?->name
                         ?? $record->serviceGroup?->name
@@ -32,7 +32,7 @@ class TariffsTable
                     ->weight('bold'),
 
                 TextColumn::make('category')
-                    ->label('Tingkat Objek')
+                    ->label(__('Object Level'))
                     ->badge()
                     ->state(fn ($record): string => $record->test_parameter_id ? 'Parameter' : ($record->service_package_id ? 'Paket' : 'Kelompok'))
                     ->color(fn ($state): string => match ($state) {
@@ -42,24 +42,24 @@ class TariffsTable
                     }),
 
                 TextColumn::make('amount')
-                    ->label('Nominal Tarif')
+                    ->label(__('Tariff Amount'))
                     ->money('IDR', locale: 'id_ID')
                     ->sortable(),
 
                 TextColumn::make('effective_from')
-                    ->label('Mulai Berlaku')
+                    ->label(__('Effective From'))
                     ->date('d M Y')
                     ->sortable(),
 
                 TextColumn::make('effective_until')
-                    ->label('Berakhir')
+                    ->label(__('Expires'))
                     ->date('d M Y')
                     ->placeholder('Masih Berlaku')
                     ->sortable(),
             ])
             ->filters([
                 Filter::make('currently_effective')
-                    ->label('Hanya yang Masih Berlaku')
+                    ->label(__('Only Currently Valid'))
                     ->query(fn (Builder $query) => $query->where('effective_from', '<=', now())
                         ->where(fn ($q) => $q->whereNull('effective_until')->orWhere('effective_until', '>=', now()))),
             ])

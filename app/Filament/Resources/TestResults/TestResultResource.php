@@ -22,9 +22,15 @@ class TestResultResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Pengujian Laboratorium';
 
-    protected static ?string $modelLabel = 'Hasil Uji Parameter';
+    public static function getModelLabel(): string
+    {
+        return __('Parameter Test Result');
+    }
 
-    protected static ?string $pluralModelLabel = 'Hasil Pengujian Parameter';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Parameter Test Results');
+    }
 
     protected static ?int $navigationSort = 2;
 

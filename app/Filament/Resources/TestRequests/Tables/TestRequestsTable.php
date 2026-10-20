@@ -20,7 +20,7 @@ class TestRequestsTable
         return $table
             ->columns([
                 TextColumn::make('fpps_number')
-                    ->label('Nomor FPPS')
+                    ->label(__('FPPS Number'))
                     ->badge()
                     ->color('primary')
                     ->searchable()
@@ -28,19 +28,19 @@ class TestRequestsTable
                     ->copyable(),
 
                 TextColumn::make('customer.name')
-                    ->label('Pemohon / Pelanggan')
+                    ->label(__('Applicant / Customer'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('serviceGroup.name')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
 
                 TextColumn::make('channel')
-                    ->label('Kanal')
+                    ->label(__('Channel'))
                     ->badge()
                     ->formatStateUsing(function ($state): string {
                         if ($state instanceof RegistrationChannel) {
@@ -57,12 +57,12 @@ class TestRequestsTable
                     ->color('gray'),
 
                 TextColumn::make('total_amount')
-                    ->label('Total Retribusi')
+                    ->label(__('Total Retribution'))
                     ->money('IDR', locale: 'id_ID')
                     ->sortable(),
 
                 TextColumn::make('payment_status')
-                    ->label('Pembayaran')
+                    ->label(__('Payment'))
                     ->badge()
                     ->color(fn ($state): string => match ($state?->value ?? $state) {
                         'paid', PaymentStatus::Paid => 'success',
@@ -82,7 +82,7 @@ class TestRequestsTable
                     }),
 
                 TextColumn::make('status')
-                    ->label('Status Alur')
+                    ->label(__('Workflow Status'))
                     ->badge()
                     ->color(fn ($state): string => match ($state?->value ?? $state) {
                         'completed', TestRequestStatus::Completed => 'success',
@@ -112,25 +112,25 @@ class TestRequestsTable
                     }),
 
                 TextColumn::make('estimated_completion_date')
-                    ->label('Target SLA')
+                    ->label(__('Target SLA'))
                     ->date('d M Y')
                     ->placeholder('-')
                     ->sortable(),
 
                 TextColumn::make('registered_at')
-                    ->label('Waktu Daftar')
+                    ->label(__('Registration Time'))
                     ->dateTime('d M Y, H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('service_group_id')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->relationship('serviceGroup', 'name')
                     ->preload(),
 
                 SelectFilter::make('payment_status')
-                    ->label('Status Pembayaran')
+                    ->label(__('Payment Status'))
                     ->options([
                         'unpaid' => 'Belum Bayar',
                         'paid' => 'Lunas',
@@ -138,7 +138,7 @@ class TestRequestsTable
                     ]),
 
                 SelectFilter::make('status')
-                    ->label('Status Permohonan')
+                    ->label(__('Request Status'))
                     ->options([
                         'submitted' => 'Menunggu Verifikasi',
                         'awaiting_payment' => 'Menunggu Pembayaran',

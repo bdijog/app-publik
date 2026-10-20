@@ -20,7 +20,7 @@ class CompletionEstimateForm
                     ->schema([
                         Grid::make(2)->schema([
                             Select::make('service_group_id')
-                                ->label('Kelompok Layanan')
+                                ->label(__('Service Group'))
                                 ->relationship('serviceGroup', 'name')
                                 ->searchable()
                                 ->preload()
@@ -28,7 +28,7 @@ class CompletionEstimateForm
                                 ->helperText('Kosongkan jika berlaku umum untuk seluruh kelompok layanan'),
 
                             TextInput::make('days')
-                                ->label('Jumlah Hari Kalender')
+                                ->label(__('Calendar Days Count'))
                                 ->numeric()
                                 ->minValue(1)
                                 ->required()
@@ -36,7 +36,7 @@ class CompletionEstimateForm
                                 ->helperText('Standar brosur Balai: 10 hari kalender'),
 
                             Select::make('start_point')
-                                ->label('Titik Awal Perhitungan Waktu')
+                                ->label(__('Time Calculation Start Point'))
                                 ->options([
                                     'payment' => 'Sejak Pembayaran / Registrasi Lunas',
                                     'receipt' => 'Sejak Sampel Fisik Diterima di Lab',
@@ -45,7 +45,7 @@ class CompletionEstimateForm
                                 ->required(),
 
                             DatePicker::make('effective_from')
-                                ->label('Mulai Berlaku')
+                                ->label(__('Effective From'))
                                 ->default(now())
                                 ->required(),
                         ]),

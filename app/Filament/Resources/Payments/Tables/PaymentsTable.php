@@ -18,25 +18,25 @@ class PaymentsTable
         return $table
             ->columns([
                 TextColumn::make('testRequest.fpps_number')
-                    ->label('Nomor FPPS')
+                    ->label(__('FPPS Number'))
                     ->badge()
                     ->color('primary')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('testRequest.customer.name')
-                    ->label('Pemohon / Pelanggan')
+                    ->label(__('Applicant / Customer'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('amount')
-                    ->label('Jumlah Bayar')
+                    ->label(__('Amount Paid'))
                     ->money('IDR', locale: 'id_ID')
                     ->sortable(),
 
                 TextColumn::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->badge()
                     ->color(fn ($state): string => match ($state?->value ?? $state) {
                         'paid', PaymentStatus::Paid => 'success',
@@ -56,19 +56,19 @@ class PaymentsTable
                     }),
 
                 TextColumn::make('paid_at')
-                    ->label('Waktu Bayar')
+                    ->label(__('Payment Time'))
                     ->dateTime('d M Y, H:i')
                     ->sortable(),
 
                 TextColumn::make('recordedBy.name')
-                    ->label('Petugas Kasir')
+                    ->label(__('Cashier Officer'))
                     ->badge()
                     ->color('gray')
                     ->placeholder('-'),
             ])
             ->filters([
                 SelectFilter::make('status')
-                    ->label('Status Pembayaran')
+                    ->label(__('Payment Status'))
                     ->options([
                         'unpaid' => 'Belum Bayar',
                         'paid' => 'Lunas',

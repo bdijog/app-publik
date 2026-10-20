@@ -20,29 +20,29 @@ class TestParametersTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Parameter Uji')
+                    ->label(__('Test Parameter'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('serviceGroup.name')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->badge()
                     ->color('primary')
                     ->sortable(),
 
                 TextColumn::make('unit')
-                    ->label('Satuan')
+                    ->label(__('Unit'))
                     ->placeholder('-'),
 
                 TextColumn::make('method')
-                    ->label('Metode Default')
+                    ->label(__('Default Method'))
                     ->limit(25)
                     ->placeholder('-')
                     ->toggleable(),
 
                 TextColumn::make('result_type')
-                    ->label('Tipe')
+                    ->label(__('Type'))
                     ->badge()
                     ->formatStateUsing(function ($state): string {
                         if ($state instanceof ResultType) {
@@ -54,7 +54,7 @@ class TestParametersTable
                     ->color(fn ($state) => ($state === 'numeric' || $state === ResultType::Numeric) ? 'info' : 'gray'),
 
                 TextColumn::make('threshold')
-                    ->label('Baku Mutu')
+                    ->label(__('Quality Standard'))
                     ->state(function ($record): string {
                         $isNumeric = ($record->result_type === ResultType::Numeric || $record->result_type?->value === 'numeric' || $record->result_type === 'numeric');
                         if ($isNumeric) {
@@ -73,25 +73,25 @@ class TestParametersTable
                     }),
 
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean()
                     ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('service_group_id')
-                    ->label('Kelompok Layanan')
+                    ->label(__('Service Group'))
                     ->relationship('serviceGroup', 'name')
                     ->preload(),
 
                 SelectFilter::make('result_type')
-                    ->label('Tipe Hasil')
+                    ->label(__('Result Type'))
                     ->options([
                         'numeric' => 'Angka / Numerik',
                         'text' => 'Teks / Kualitatif',
                     ]),
 
                 TernaryFilter::make('is_active')
-                    ->label('Status Aktif'),
+                    ->label(__('Active Status')),
             ])
             ->recordActions([
                 EditAction::make(),

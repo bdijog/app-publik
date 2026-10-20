@@ -24,42 +24,42 @@ class EmployeesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama Pegawai')
+                    ->label(__('Employee Name'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('nip')
-                    ->label('NIP')
+                    ->label(__('NIP'))
                     ->placeholder('-')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('email')
-                    ->label('Email Dinas')
+                    ->label(__('Official Email'))
                     ->searchable()
                     ->copyable()
                     ->icon('heroicon-m-envelope'),
 
                 TextColumn::make('laboratoryUnit.name')
-                    ->label('Instalasi')
+                    ->label(__('Laboratory Unit'))
                     ->badge()
                     ->placeholder('Non-Laboratorium')
                     ->sortable(),
 
                 TextColumn::make('roles.name')
-                    ->label('Peran RBAC')
+                    ->label(__('RBAC Role'))
                     ->badge()
                     ->color('info')
                     ->separator(','),
 
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean()
                     ->sortable(),
 
                 TextColumn::make('last_login_at')
-                    ->label('Login Terakhir')
+                    ->label(__('Last Login'))
                     ->dateTime('d M Y, H:i')
                     ->placeholder('Belum pernah')
                     ->sortable()
@@ -67,17 +67,17 @@ class EmployeesTable
             ])
             ->filters([
                 SelectFilter::make('laboratory_unit_id')
-                    ->label('Instalasi')
+                    ->label(__('Laboratory Unit'))
                     ->relationship('laboratoryUnit', 'name')
                     ->preload(),
 
                 SelectFilter::make('roles')
-                    ->label('Peran')
+                    ->label(__('Role'))
                     ->relationship('roles', 'name', fn (Builder $query) => $query->where('guard_name', 'employee'))
                     ->preload(),
 
                 TernaryFilter::make('is_active')
-                    ->label('Status Aktif'),
+                    ->label(__('Active Status')),
 
                 TrashedFilter::make(),
             ])

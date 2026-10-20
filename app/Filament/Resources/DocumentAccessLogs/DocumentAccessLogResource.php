@@ -21,9 +21,15 @@ class DocumentAccessLogResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Audit & Jejak Sistem';
 
-    protected static ?string $modelLabel = 'Log Akses Dokumen';
+    public static function getModelLabel(): string
+    {
+        return __('Document Access Log');
+    }
 
-    protected static ?string $pluralModelLabel = 'Log Akses Dokumen / QR';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Document / QR Access Logs');
+    }
 
     protected static ?int $navigationSort = 2;
 

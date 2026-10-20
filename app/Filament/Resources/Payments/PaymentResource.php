@@ -23,9 +23,15 @@ class PaymentResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Pelayanan & Permohonan';
 
-    protected static ?string $modelLabel = 'Pembayaran';
+    public static function getModelLabel(): string
+    {
+        return __('Payment');
+    }
 
-    protected static ?string $pluralModelLabel = 'Pembayaran & Tagihan';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Payments & Invoices');
+    }
 
     protected static ?int $navigationSort = 2;
 

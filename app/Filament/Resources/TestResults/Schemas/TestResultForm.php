@@ -22,21 +22,21 @@ class TestResultForm
                     ->schema([
                         Grid::make(3)->schema([
                             Select::make('test_job_id')
-                                ->label('Nomor SPK Pengujian')
+                                ->label(__('Test SPK Number'))
                                 ->relationship('testJob', 'job_number')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
 
                             Select::make('test_request_parameter_id')
-                                ->label('Parameter Pengujian')
+                                ->label(__('Testing Parameter'))
                                 ->relationship('testRequestParameter.testParameter', 'name')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
 
                             Select::make('analyst_id')
-                                ->label('Analis Pelaksana')
+                                ->label(__('Assigned Analyst'))
                                 ->relationship('analyst', 'name')
                                 ->searchable()
                                 ->preload()
@@ -50,32 +50,32 @@ class TestResultForm
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('value_numeric')
-                                ->label('Nilai Hasil (Numerik / Angka)')
+                                ->label(__('Result Value (Numeric / Number)'))
                                 ->numeric()
                                 ->placeholder('mis. 7.45'),
 
                             TextInput::make('value_text')
-                                ->label('Nilai Hasil (Kualitatif / Teks)')
+                                ->label(__('Result Value (Qualitative / Text)'))
                                 ->placeholder('mis. Negatif / Tidak Berbau / Jernih')
                                 ->maxLength(255),
 
                             TextInput::make('unit')
-                                ->label('Satuan Pengukuran')
+                                ->label(__('Measurement Unit'))
                                 ->maxLength(30)
                                 ->placeholder('mis. mg/L, CFU/mL, NTU'),
 
                             TextInput::make('method')
-                                ->label('Metode yang Digunakan')
+                                ->label(__('Method Used'))
                                 ->maxLength(255)
                                 ->placeholder('mis. Spektrofotometri / Titrimetri / SNI'),
 
                             DatePicker::make('tested_at')
-                                ->label('Tanggal Pengujian')
+                                ->label(__('Testing Date'))
                                 ->default(now())
                                 ->required(),
 
                             Select::make('status')
-                                ->label('Status Hasil')
+                                ->label(__('Result Status'))
                                 ->options([
                                     'draft' => 'Draf Hasil',
                                     'submitted' => 'Menunggu Validasi',
@@ -86,12 +86,12 @@ class TestResultForm
                                 ->required(),
 
                             Textarea::make('notes')
-                                ->label('Catatan Analis / Blanko / QC')
+                                ->label(__('Analyst Notes / Blank / QC'))
                                 ->rows(2)
                                 ->columnSpanFull(),
 
                             Toggle::make('is_locked')
-                                ->label('Status Terkunci (Locked)')
+                                ->label(__('Locked Status'))
                                 ->helperText('Hasil terkunci tidak dapat diubah kecuali melalui mekanisme revisi resmi')
                                 ->disabled()
                                 ->dehydrated(),

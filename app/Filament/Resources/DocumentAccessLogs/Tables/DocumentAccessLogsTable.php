@@ -15,13 +15,13 @@ class DocumentAccessLogsTable
         return $table
             ->columns([
                 TextColumn::make('testReport.report_number')
-                    ->label('Nomor LHU')
+                    ->label(__('LHU Number'))
                     ->weight('bold')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('action')
-                    ->label('Aksi')
+                    ->label(__('Action'))
                     ->badge()
                     ->color(fn (DocumentAccessAction|string|null $state): string => match ($state instanceof DocumentAccessAction ? $state->value : $state) {
                         'view' => 'info',
@@ -37,30 +37,30 @@ class DocumentAccessLogsTable
                     }),
 
                 TextColumn::make('customer.name')
-                    ->label('Pelanggan')
+                    ->label(__('Customer'))
                     ->placeholder('-')
                     ->searchable(),
 
                 TextColumn::make('employee.name')
-                    ->label('Pegawai')
+                    ->label(__('Employee'))
                     ->placeholder('-')
                     ->searchable(),
 
                 TextColumn::make('ip_address')
-                    ->label('Alamat IP')
+                    ->label(__('IP Address'))
                     ->badge()
                     ->color('gray')
                     ->searchable(),
 
                 TextColumn::make('accessed_at')
-                    ->label('Waktu Akses')
+                    ->label(__('Access Time'))
                     ->dateTime('d/m/Y H:i:s')
                     ->sortable(),
             ])
             ->defaultSort('accessed_at', 'desc')
             ->filters([
                 SelectFilter::make('action')
-                    ->label('Jenis Akses')
+                    ->label(__('Access Type'))
                     ->options([
                         DocumentAccessAction::View->value => 'Lihat / Preview',
                         DocumentAccessAction::Download->value => 'Unduh Dokumen',

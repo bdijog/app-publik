@@ -23,9 +23,15 @@ class TestParameterResource extends Resource
 
     protected static ?string $cluster = CatalogCluster::class;
 
-    protected static ?string $modelLabel = 'Parameter Uji';
+    public static function getModelLabel(): string
+    {
+        return __('Test Parameter');
+    }
 
-    protected static ?string $pluralModelLabel = 'Parameter Uji';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Test Parameters');
+    }
 
     protected static ?int $navigationSort = 4;
 

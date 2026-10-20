@@ -23,9 +23,15 @@ class ServiceGroupResource extends Resource
 
     protected static ?string $cluster = CatalogCluster::class;
 
-    protected static ?string $modelLabel = 'Kelompok Layanan';
+    public static function getModelLabel(): string
+    {
+        return __('Service Group');
+    }
 
-    protected static ?string $pluralModelLabel = 'Kelompok Layanan';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Service Groups');
+    }
 
     protected static ?int $navigationSort = 2;
 

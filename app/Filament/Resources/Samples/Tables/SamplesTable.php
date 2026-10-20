@@ -28,7 +28,7 @@ class SamplesTable
         return $table
             ->columns([
                 TextColumn::make('sample_code')
-                    ->label('Kode Sampel')
+                    ->label(__('Sample Code'))
                     ->badge()
                     ->color('primary')
                     ->searchable()
@@ -36,31 +36,31 @@ class SamplesTable
                     ->copyable(),
 
                 TextColumn::make('sample_name')
-                    ->label('Nama Sampel')
+                    ->label(__('Sample Name'))
                     ->searchable()
                     ->sortable()
                     ->weight('bold'),
 
                 TextColumn::make('testRequest.fpps_number')
-                    ->label('Nomor FPPS')
+                    ->label(__('FPPS Number'))
                     ->badge()
                     ->color('gray')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('sampleType.name')
-                    ->label('Jenis Sampel')
+                    ->label(__('Sample Type'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
 
                 TextColumn::make('volume')
-                    ->label('Volume / Jumlah')
+                    ->label(__('Volume / Quantity'))
                     ->state(fn (Sample $record): string => "{$record->quantity} {$record->unit}")
                     ->sortable(),
 
                 TextColumn::make('status')
-                    ->label('Status Penerimaan')
+                    ->label(__('Acceptance Status'))
                     ->badge()
                     ->color(fn ($state): string => match ($state?->value ?? $state) {
                         'accepted', SampleStatus::Accepted => 'success',
@@ -80,19 +80,19 @@ class SamplesTable
                     }),
 
                 TextColumn::make('collected_at')
-                    ->label('Waktu Sampling')
+                    ->label(__('Sampling Time'))
                     ->dateTime('d M Y, H:i')
                     ->placeholder('-')
                     ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('sample_type_id')
-                    ->label('Jenis Sampel')
+                    ->label(__('Sample Type'))
                     ->relationship('sampleType', 'name')
                     ->preload(),
 
                 SelectFilter::make('status')
-                    ->label('Status Penerimaan')
+                    ->label(__('Acceptance Status'))
                     ->options([
                         'pending' => 'Menunggu Penerimaan',
                         'accepted' => 'Diterima',
@@ -101,27 +101,27 @@ class SamplesTable
             ])
             ->recordActions([
                 Action::make('verify_receipt')
-                    ->label('Verifikasi Fisik')
+                    ->label(__('Physical Verification'))
                     ->icon(Heroicon::OutlinedClipboardDocumentCheck)
                     ->color('success')
                     ->modalHeading(fn (Sample $record) => "Verifikasi Fisik Sampel: {$record->sample_code}")
                     ->modalDescription('Periksa kelayakan kondisi fisik wadah, volume, suhu, dan kelengkapan label sampel')
                     ->form([
                         TextInput::make('received_volume')
-                            ->label('Volume / Bobot Riil Diterima')
+                            ->label(__('Actual Received Volume / Weight'))
                             ->numeric()
                             ->required()
                             ->default(fn (Sample $record) => $record->quantity)
                             ->helperText('Cocokkan dengan persyaratan volume minimum jenis sampel'),
 
                         TextInput::make('condition')
-                            ->label('Kondisi Fisik Sampel')
+                            ->label(__('Sample Physical Condition'))
                             ->required()
                             ->placeholder('mis. Suhu 4°C, Wadah Utuh, Label Terbaca Jelas')
                             ->default('Wadah utuh, suhu terjaga, label terbaca jelas'),
 
                         Select::make('decision')
-                            ->label('Keputusan Penerimaan')
+                            ->label(__('Acceptance Decision'))
                             ->options([
                                 'accepted' => 'Diterima (Layak Uji)',
                                 'rejected' => 'Ditolak (Tidak Layak Uji)',
@@ -131,13 +131,13 @@ class SamplesTable
                             ->live(),
 
                         Textarea::make('rejection_reason')
-                            ->label('Alasan Penolakan')
+                            ->label(__('Rejection Reason'))
                             ->required(fn (Get $get) => $get('decision') === 'rejected')
                             ->visible(fn (Get $get) => $get('decision') === 'rejected')
                             ->placeholder('mis. Volume tidak memenuhi batas minimum / wadah pecah / suhu melewati batas'),
 
                         Textarea::make('follow_up')
-                            ->label('Rekomendasi Tindak Lanjut')
+                            ->label(__('Follow-up Recommendations'))
                             ->required(fn (Get $get) => $get('decision') === 'rejected')
                             ->visible(fn (Get $get) => $get('decision') === 'rejected')
                             ->placeholder('mis. Meminta pemohon mengirimkan sampel ulang dengan wadah steril'),

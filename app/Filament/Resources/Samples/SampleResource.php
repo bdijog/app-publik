@@ -23,9 +23,15 @@ class SampleResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Penerimaan Sampel';
 
-    protected static ?string $modelLabel = 'Sampel Fisik';
+    public static function getModelLabel(): string
+    {
+        return __('Physical Sample');
+    }
 
-    protected static ?string $pluralModelLabel = 'Data Sampel Fisik';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Physical Samples');
+    }
 
     protected static ?int $navigationSort = 1;
 
