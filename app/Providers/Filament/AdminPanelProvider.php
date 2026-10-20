@@ -33,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Teal,
             ])
+            ->spa()
             ->resourceEditPageRedirect('index')
             ->resourceCreatePageRedirect('index')
             ->sidebarCollapsibleOnDesktop()

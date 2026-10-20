@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#f3f4f2", "primary-container": "#134e4a", "surface": "#f8faf8", "slate-subtle": "#64748B", "secondary-fixed": "#dae2fd", "surface-container-highest": "#e1e3e1", "on-tertiary": "#ffffff", "surface-variant": "#e1e3e1", "surface-container": "#edeeed", "outline-variant": "#bfc8c6", "on-background": "#191c1c", "on-secondary-container": "#5c647a", "sky-progress": "#0284C7", "verified-green": "#16A34A", "teal-muted": "#CCFBF1", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "primary-fixed-dim": "#9ad1cb", "tertiary-fixed": "#ffdbcd", "border-hairline": "#E2E8F0", "slate-body": "#0F172A", "rejection-red": "#DC2626", "tertiary-container": "#673a26", "on-surface": "#191c1c", "secondary": "#565e74", "pending-tint": "#FEF3C7", "secondary-container": "#dae2fd", "pending-amber": "#D97706", "on-error": "#ffffff", "on-secondary": "#ffffff", "teal-deep": "#134E4A", "surface-container-high": "#e7e8e7", "on-secondary-fixed": "#131b2e", "surface-bright": "#f8faf8", "teal-surface": "#F0FDFA", "primary-fixed": "#b5ede7", "teal-hover": "#0F3F3C", "on-primary-container": "#87beb8", "inverse-primary": "#9ad1cb", "surface-dim": "#d9dad9", "surface-tint": "#316763", "primary": "#003633", "on-primary": "#ffffff", "background": "#f8faf8", "on-surface-variant": "#404847", "inverse-surface": "#2e3130", "error-container": "#ffdad6", "sky-tint": "#E0F2FE", "tertiary-fixed-dim": "#f9b89d", "inverse-on-surface": "#f0f1f0", "tertiary": "#4c2412", "verified-tint": "#DCFCE7", "on-tertiary-fixed": "#331103", "outline": "#707977", "border-strong": "#CBD5E1", "on-primary-fixed-variant": "#144f4b", "on-secondary-fixed-variant": "#3f465c", "rejection-tint": "#FEE2E2", "on-tertiary-fixed-variant": "#683b27", "on-tertiary-container": "#e4a58b", "card-bg": "#FFFFFF", "on-primary-fixed": "#00201e", "surface-bg": "#F8FAFC", "error": "#ba1a1a", "secondary-fixed-dim": "#bec6e0" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter": "1.5rem", "margin": "2rem", "margin-mobile": "1rem", "gutter-sm": "1rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-desktop": "3rem", "space-xs": "0.25rem", "space-md": "1rem", "gutter-lg": "2rem", "space-xl": "2.5rem" }, "fontFamily": { "label-md": ["Manrope"], "headline-xl-mobile": ["Newsreader"], "headline-sm": ["Manrope"], "headline-lg": ["Newsreader"], "code-tracking": ["Manrope"], "headline-md": ["Newsreader"], "headline-lg-mobile": ["Newsreader"], "label-sm": ["Manrope"], "body-sm": ["Manrope"], "body-lg": ["Manrope"], "headline-xl": ["Newsreader"], "body-md": ["Manrope"], "display-hero": ["Newsreader"], "display-hero-mobile": ["Newsreader"] }, "fontSize": { "label-md": ["0.875rem", { "lineHeight": "1.3", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-sm": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "700" }], "headline-lg": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }], "code-tracking": ["1.125rem", { "lineHeight": "1.3", "letterSpacing": "0.06em", "fontWeight": "700" }], "headline-md": ["1.375rem", { "lineHeight": "1.35", "letterSpacing": "0", "fontWeight": "600" }], "headline-lg-mobile": ["1.5rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-sm": ["0.8125rem", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }], "headline-xl": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-md": ["0.9375rem", { "lineHeight": "1.55", "letterSpacing": "0", "fontWeight": "400" }], "display-hero": ["3rem", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-hero-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.015em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md"><img alt="Logo Balai Labkesmas Ambon" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VqNg70YSPjWvytO6IAZpA6doiYHJ9dojRA2UmynUv-oROIsZUZeCB1DuAp1ADS-HitsjAzmK-MDS6lYqzXYTBWllgvfuH0cDUVe6CL0icsmtwLPv2qTKk-oEmagxBki4dtYzGglVzhfHYrL5vLD7J4xLXi1oimx47YdCUKmKrLrOzu4ndhI7Zalkztfe5XHUAd8E5fHspDQtFkEVip2iyy8ek3-DMWz4D-eXADgWM-8VPTQ5E6GuuRmWRv"/><div class="flex flex-col"><span class="font-label-md text-label-md text-primary font-bold leading-tight">Balai Labkesmas Ambon</span><span class="font-label-sm text-label-sm text-slate-subtle leading-none">Kementerian Kesehatan RI</span></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-teal-surface text-primary font-bold rounded-xl"><a class="px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface rounded-xl font-label-md text-label-md transition-all" data-path="beranda" href="#">Beranda</a><a aria-current="page" class="px-space-md py-space-sm transition-all bg-teal-surface text-primary font-bold rounded-xl" data-path="katalog-dan-tarif" href="#">Katalog &amp; Tarif</a><a class="px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface rounded-xl font-label-md text-label-md transition-all" data-path="pendaftaran-fpps" href="#">Pendaftaran FPPS</a><a class="px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface rounded-xl font-label-md text-label-md transition-all" data-path="lacak-sampel" href="#">Lacak Sampel</a><a class="px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface rounded-xl font-label-md text-label-md transition-all" data-path="verifikasi-lhu" href="#">Verifikasi LHU</a><a class="px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface rounded-xl font-label-md text-label-md transition-all" data-path="kontak-dan-loket" href="#">Kontak &amp; Loket</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center justify-center bg-primary-container text-on-primary hover:bg-teal-hover px-space-md py-space-sm rounded-xl font-label-md text-label-md transition-colors" data-path="lacak-sampel" href="#">Lacak Hasil FPPS</a><a class="hidden md:inline-flex items-center justify-center bg-surface-container-low text-on-surface hover:bg-surface-container hover:text-on-surface px-space-md py-space-sm rounded-xl font-label-md text-label-md transition-colors" data-path="kontak-dan-loket" href="#">Hubungi Loket / Helpdesk</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full pb-32">
+<!-- Top Context Header & Hero Title -->
+<section class="w-full bg-surface-container-lowest border-b border-border-hairline">
+<div class="max-w-7xl mx-auto px-gutter py-space-xl">
+<!-- Breadcrumb / Status Marker -->
+<div class="flex flex-wrap items-center gap-space-xs text-slate-subtle font-label-sm text-label-sm mb-space-sm">
+<span class="inline-flex items-center gap-1 text-primary font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+          Layanan Resmi Kemenkes RI
+        </span>
+<span class="text-outline-variant">/</span>
+<span>Tarif PNBP Terstandar</span>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-semibold">Katalog &amp; Simulasi Biaya</span>
+</div>
+<!-- Institutional Headline & Description -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="max-w-3xl space-y-space-sm">
+<h1 class="font-headline-xl text-headline-xl text-slate-body tracking-tight font-semibold">
+            Katalog Layanan &amp; Transparansi Tarif Resmi
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Sesuai Peraturan Tarif Resmi Pelayanan Kesehatan Kementerian Kesehatan RI. Transparan, terstandar, dan dapat disimulasikan secara mandiri sebelum pengajuan FPPS.
+          </p>
+</div>
+<!-- Metric Badges Group -->
+<div class="flex items-center gap-space-md shrink-0">
+<div class="bg-teal-surface px-space-md py-space-sm rounded-xl flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-teal-deep text-[24px]">policy</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-teal-deep uppercase font-bold tracking-wider">Regulasi Baku</span>
+<span class="font-label-md text-label-md text-slate-body">Permenkes No. 2 / 2023</span>
+</div>
+</div>
+<div class="bg-surface-container-low px-space-md py-space-sm rounded-xl hidden sm:flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-verified-green text-[24px]">verified</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-subtle uppercase font-bold tracking-wider">Standar Mutu</span>
+<span class="font-label-md text-label-md text-slate-body">ISO/IEC 17025:2017</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Instant Search Bar -->
+<div class="mt-space-xl relative max-w-4xl">
+<div class="relative flex items-center bg-surface-container-lowest rounded-xl shadow-md border border-border-hairline transition-all focus-within:border-teal-deep focus-within:ring-2 focus-within:ring-teal-deep/15">
+<span class="material-symbols-outlined text-slate-subtle ml-space-md text-[24px]">search</span>
+<input class="w-full py-space-md pl-space-sm pr-space-xl bg-transparent font-body-md text-body-md text-on-surface placeholder:text-slate-subtle focus:outline-none" id="parameter-search-input" placeholder="Cari nama parameter, misalnya: E. Coli, Timbal, pH, Boraks, Salmonella, Nitrat..." type="text"/>
+<button class="hidden absolute right-space-md text-slate-subtle hover:text-on-surface" id="clear-search-btn" title="Bersihkan Pencarian" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex items-center justify-between mt-space-xs px-space-xs text-slate-subtle font-label-sm text-label-sm">
+<span>Pencarian mencakup 17 kelompok pengujian dan lebih dari 140 parameter terakreditasi KAN.</span>
+<span class="font-medium text-teal-deep" id="search-counter">Menampilkan 6 Paket Unggulan</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 17 Service Categories Pill Filter -->
+<section class="w-full bg-surface-container-low/70 border-b border-border-hairline sticky top-20 z-30 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-gutter py-space-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-slate-subtle font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+          17 Kelompok Layanan Pengujian:
+        </span>
+<button class="font-label-sm text-label-sm text-primary hover:underline font-semibold cursor-pointer" id="btn-filter-all">
+          Reset Filter Kategori
+        </button>
+</div>
+<!-- Scrollable Category Pill List -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs pt-0.5 no-scrollbar">
+<button class="category-pill active whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-primary-container text-on-primary shadow-sm flex items-center gap-1" data-category="semua">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+          Semua Layanan
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="air-bersih">
+          Air Bersih
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="air-minum">
+          Air Minum
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="air-laut">
+          Air Laut
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="air-limbah-domestik">
+          Air Limbah Domestik
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="air-limbah-faskes">
+          Air Limbah Faskes
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="vektor-penyakit">
+          Vektor Penyakit
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="makanan-minuman">
+          Makanan &amp; Minuman
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="swab-alat">
+          Swab Alat
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="air-sungai">
+          Air Sungai
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="air-kolam-renang">
+          Air Kolam Renang
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="bakteriologi-udara">
+          Bakteriologi Udara
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="udara-ambien">
+          Udara Ambien
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="udara-ruangan">
+          Udara Ruangan
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="patologi-klinis">
+          Patologi Klinis
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="penelitian">
+          Penelitian (D3/S1/S2)
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="mikrobiologi-biomolekuler">
+          Mikrobiologi/Biomolekuler
+        </button>
+<button class="category-pill whitespace-nowrap px-space-md py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-lowest text-slate-body border border-border-hairline hover:bg-surface-container-high" data-category="kalibrasi-alat-lab">
+          Kalibrasi Alat Lab
+        </button>
+</div>
+</div>
+</section>
+<!-- Service Catalog Bento Grid Area -->
+<section class="w-full max-w-7xl mx-auto px-gutter py-space-xl">
+<!-- Notice Banner -->
+<div class="mb-space-lg p-space-md rounded-xl bg-teal-surface border border-teal-muted flex items-start gap-space-md">
+<span class="material-symbols-outlined text-teal-deep text-[24px] mt-0.5 shrink-0">info</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-teal-deep">Panduan Pengemasan &amp; Penyerahan Sampel Uji</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Pastikan sampel memenuhi volume minimal dan wadah steril berlabel kode sampling sebelum diantar ke loket Balai Labkesmas Ambon atau dikirim melalui ekspedisi berpendingin (cold chain 2°C - 8°C).
+        </p>
+</div>
+</div>
+<!-- Parameter Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" id="catalog-cards-container">
+<!-- Kartu 1: Paket Lengkap Air Bersih -->
+<article class="service-card group bg-surface-container-lowest rounded-xl border border-border-hairline hover:border-border-strong hover:shadow-md transition-all flex flex-col justify-between" data-category="air-bersih" data-id="1" data-keywords="air bersih fisika kimia bakteriologi ph kekeruhan tds nitrat coliform timbal permenkes 2/2023" data-price="503000" data-sla="8" data-title="Paket Lengkap Air Bersih (Fisika + Kimia + Bakteriologi)">
+<div class="p-space-lg space-y-space-md">
+<!-- Card Header & Category Tag -->
+<div class="flex items-start justify-between gap-space-sm">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-sky-tint text-sky-progress font-semibold">
+<span class="material-symbols-outlined text-[14px]">water_drop</span>
+              Air Bersih
+            </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-slate-subtle bg-surface-container-low px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              SLA: 8 Hari Kerja
+            </span>
+</div>
+<!-- Service Title -->
+<div>
+<h2 class="font-headline-md text-headline-md text-slate-body font-semibold group-hover:text-primary transition-colors">
+              Paket Lengkap Air Bersih
+            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Kombinasi komprehensif uji Fisika, Kimia Esensial, dan Bakteriologi sesuai baku mutu sanitasi dan higienis.
+            </p>
+</div>
+<!-- Parameter Included Chips -->
+<div class="space-y-space-xs">
+<span class="font-label-sm text-label-sm text-slate-subtle uppercase tracking-wider block font-bold">19 Parameter Teruji:</span>
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Kekeruhan</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">TDS</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Suhu &amp; Bau</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">pH</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Besi (Fe)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Mangan (Mn)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Nitrat (NO3)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Nitrit (NO2)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Total Coliform</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">E. Coli</span>
+<span class="bg-teal-surface text-teal-deep px-2 py-0.5 rounded text-[11px] font-semibold">+9 Lainnya</span>
+</div>
+</div>
+<!-- Sampling Requirements Box -->
+<div class="bg-surface-container-low p-space-sm rounded-xl space-y-space-xs font-body-sm text-body-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">science</span>
+<span><strong>Wadah:</strong> Jeriken 2L &amp; Botol Kaca Steril 500mL</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">straighten</span>
+<span><strong>Vol. Minimal:</strong> 2.500 mL (Air Bebas Kontaminasi)</span>
+</div>
+<div class="flex items-center gap-2 text-slate-subtle text-[12px]">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>Acuan: Permenkes RI No. 2 Tahun 2023 (Kesling)</span>
+</div>
+</div>
+</div>
+<!-- Card Footer (Price & Action) -->
+<div class="p-space-lg pt-0 border-t border-border-hairline/60 mt-space-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-slate-subtle block">Tarif Resmi PNBP</span>
+<span class="font-headline-sm text-headline-sm text-slate-body font-bold text-teal-deep">Rp 503.000</span>
+</div>
+<button class="btn-toggle-select inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-xl font-label-md text-label-md font-semibold transition-all bg-primary-container text-on-primary hover:bg-teal-hover shadow-sm" onclick="toggleItemSelection(1)" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Tambah</span>
+</button>
+</div>
+</article>
+<!-- Kartu 2: Paket Kualitas Mikrobiologi Air Minum -->
+<article class="service-card group bg-surface-container-lowest rounded-xl border border-border-hairline hover:border-border-strong hover:shadow-md transition-all flex flex-col justify-between" data-category="air-minum" data-id="2" data-keywords="air minum mikrobiologi total coliform e. coli bakteri thiosulfat kemenkes damiu depowater" data-price="150000" data-sla="5" data-title="Paket Kualitas Mikrobiologi Air Minum">
+<div class="p-space-lg space-y-space-md">
+<!-- Card Header & Category Tag -->
+<div class="flex items-start justify-between gap-space-sm">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-teal-surface text-teal-deep font-semibold">
+<span class="material-symbols-outlined text-[14px]">local_drink</span>
+              Air Minum
+            </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-slate-subtle bg-surface-container-low px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              SLA: 5 Hari Kerja
+            </span>
+</div>
+<!-- Service Title -->
+<div>
+<h2 class="font-headline-md text-headline-md text-slate-body font-semibold group-hover:text-primary transition-colors">
+              Uji Mikrobiologi Air Minum (DAMIU / AMDK)
+            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Verifikasi kelayakan higienis air siap konsumsi melalui enumerasi bakteri patogen fekal dan non-fekal.
+            </p>
+</div>
+<!-- Parameter Included Chips -->
+<div class="space-y-space-xs">
+<span class="font-label-sm text-label-sm text-slate-subtle uppercase tracking-wider block font-bold">2 Parameter Inti:</span>
+<div class="flex flex-wrap gap-1">
+<span class="bg-teal-surface text-teal-deep px-2.5 py-1 rounded text-[12px] font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                Total Coliform (MPN / 100mL)
+              </span>
+<span class="bg-teal-surface text-teal-deep px-2.5 py-1 rounded text-[12px] font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                Escherichia coli (MPN / 100mL)
+              </span>
+</div>
+</div>
+<!-- Sampling Requirements Box -->
+<div class="bg-surface-container-low p-space-sm rounded-xl space-y-space-xs font-body-sm text-body-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">science</span>
+<span><strong>Wadah:</strong> Botol Kaca Gelap Steril Thiosulfat</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">straighten</span>
+<span><strong>Vol. Minimal:</strong> 500 mL (Rantai Dingin 2°C - 8°C)</span>
+</div>
+<div class="flex items-center gap-2 text-slate-subtle text-[12px]">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>Acuan: Permenkes No. 2/2023 &amp; SNI ISO 9308-1</span>
+</div>
+</div>
+</div>
+<!-- Card Footer (Price & Action) -->
+<div class="p-space-lg pt-0 border-t border-border-hairline/60 mt-space-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-slate-subtle block">Tarif Resmi PNBP</span>
+<span class="font-headline-sm text-headline-sm text-slate-body font-bold text-teal-deep">Rp 150.000</span>
+</div>
+<button class="btn-toggle-select inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-xl font-label-md text-label-md font-semibold transition-all bg-primary-container text-on-primary hover:bg-teal-hover shadow-sm" onclick="toggleItemSelection(2)" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Tambah</span>
+</button>
+</div>
+</article>
+<!-- Kartu 3: Uji Cemaran Pangan & Makanan -->
+<article class="service-card group bg-surface-container-lowest rounded-xl border border-border-hairline hover:border-border-strong hover:shadow-md transition-all flex flex-col justify-between" data-category="makanan-minuman" data-id="3" data-keywords="makanan minuman boraks formalin rhodamin b salmonella pangan jajanan bpom" data-price="340000" data-sla="6" data-title="Uji Cemaran Pangan &amp; Makanan (Bahan Berbahaya)">
+<div class="p-space-lg space-y-space-md">
+<!-- Card Header & Category Tag -->
+<div class="flex items-start justify-between gap-space-sm">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-pending-tint text-pending-amber font-semibold">
+<span class="material-symbols-outlined text-[14px]">restaurant</span>
+              Makanan &amp; Minuman
+            </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-slate-subtle bg-surface-container-low px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              SLA: 6 Hari Kerja
+            </span>
+</div>
+<!-- Service Title -->
+<div>
+<h2 class="font-headline-md text-headline-md text-slate-body font-semibold group-hover:text-primary transition-colors">
+              Uji Cemaran Kimia Pangan &amp; Salmonella
+            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Skrining bahan kimia pengawet terlarang dan bakteri enteropatogenik pada produk pangan segar, jajanan &amp; katering.
+            </p>
+</div>
+<!-- Parameter Included Chips -->
+<div class="space-y-space-xs">
+<span class="font-label-sm text-label-sm text-slate-subtle uppercase tracking-wider block font-bold">4 Parameter Uji Spesifik:</span>
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Boraks (Kualitatif)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Formalin (Kualitatif)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Rhodamin B (Pewarna)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Salmonella sp. (Kultur)</span>
+</div>
+</div>
+<!-- Sampling Requirements Box -->
+<div class="bg-surface-container-low p-space-sm rounded-xl space-y-space-xs font-body-sm text-body-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">science</span>
+<span><strong>Wadah:</strong> Plastik Klip Tebal Food-Grade Steril</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">straighten</span>
+<span><strong>Vol. Minimal:</strong> 250 gram / 250 mL per kemasan utuh</span>
+</div>
+<div class="flex items-center gap-2 text-slate-subtle text-[12px]">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>Acuan: Standar BPOM &amp; Kemenkes Keamanan Pangan</span>
+</div>
+</div>
+</div>
+<!-- Card Footer (Price & Action) -->
+<div class="p-space-lg pt-0 border-t border-border-hairline/60 mt-space-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-slate-subtle block">Tarif Resmi PNBP</span>
+<span class="font-headline-sm text-headline-sm text-slate-body font-bold text-teal-deep">Rp 340.000</span>
+</div>
+<button class="btn-toggle-select inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-xl font-label-md text-label-md font-semibold transition-all bg-primary-container text-on-primary hover:bg-teal-hover shadow-sm" onclick="toggleItemSelection(3)" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Tambah</span>
+</button>
+</div>
+</article>
+<!-- Kartu 4: Uji Bakteriologi Udara Ruangan Faskes -->
+<article class="service-card group bg-surface-container-lowest rounded-xl border border-border-hairline hover:border-border-strong hover:shadow-md transition-all flex flex-col justify-between" data-category="bakteriologi-udara" data-id="4" data-keywords="bakteriologi udara ruang operasi icu faskes rumah sakit cawan papar mikroba udara ruangan" data-price="275000" data-sla="5" data-title="Uji Bakteriologi Udara Ruang Operasi / Rawat Faskes">
+<div class="p-space-lg space-y-space-md">
+<!-- Card Header & Category Tag -->
+<div class="flex items-start justify-between gap-space-sm">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-fixed font-semibold">
+<span class="material-symbols-outlined text-[14px]">air</span>
+              Bakteriologi Udara
+            </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-slate-subtle bg-surface-container-low px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              SLA: 5 Hari Kerja
+            </span>
+</div>
+<!-- Service Title -->
+<div>
+<h2 class="font-headline-md text-headline-md text-slate-body font-semibold group-hover:text-primary transition-colors">
+              Bakteriologi Udara Ruang Medis Faskes
+            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Pengujian indeks angka kuman udara pada Instalasi Bedah Sentral (IBS), NICU, ICU, dan isolasi infeksi.
+            </p>
+</div>
+<!-- Parameter Included Chips -->
+<div class="space-y-space-xs">
+<span class="font-label-sm text-label-sm text-slate-subtle uppercase tracking-wider block font-bold">Parameter Spesifikasi:</span>
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Angka Kuman Udara (CFU/m3)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Staphylococcus aureus</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Jamur Kontaminan Udara</span>
+</div>
+</div>
+<!-- Sampling Requirements Box -->
+<div class="bg-surface-container-low p-space-sm rounded-xl space-y-space-xs font-body-sm text-body-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">science</span>
+<span><strong>Wadah:</strong> Cawan Papar Media Agar Khusus (PCA &amp; SDA)</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">straighten</span>
+<span><strong>Metode:</strong> Passive Settle Plate (15 - 30 menit ekspos)</span>
+</div>
+<div class="flex items-center gap-2 text-slate-subtle text-[12px]">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>Acuan: Permenkes No. 7 Tahun 2019 (Kesling RS)</span>
+</div>
+</div>
+</div>
+<!-- Card Footer (Price & Action) -->
+<div class="p-space-lg pt-0 border-t border-border-hairline/60 mt-space-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-slate-subtle block">Tarif Resmi PNBP</span>
+<span class="font-headline-sm text-headline-sm text-slate-body font-bold text-teal-deep">Rp 275.000</span>
+</div>
+<button class="btn-toggle-select inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-xl font-label-md text-label-md font-semibold transition-all bg-primary-container text-on-primary hover:bg-teal-hover shadow-sm" onclick="toggleItemSelection(4)" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Tambah</span>
+</button>
+</div>
+</article>
+<!-- Kartu 5: Uji Limbah Cair Faskes / Rumah Sakit -->
+<article class="service-card group bg-surface-container-lowest rounded-xl border border-border-hairline hover:border-border-strong hover:shadow-md transition-all flex flex-col justify-between" data-category="air-limbah-faskes" data-id="5" data-keywords="limbah cair faskes rumah sakit bod cod tss amonia logam ipal permenlhk 68/2016" data-price="680000" data-sla="10" data-title="Uji Limbah Cair Faskes / Rumah Sakit">
+<div class="p-space-lg space-y-space-md">
+<!-- Card Header & Category Tag -->
+<div class="flex items-start justify-between gap-space-sm">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-highest text-on-surface-variant font-semibold">
+<span class="material-symbols-outlined text-[14px]">water_ec</span>
+              Air Limbah Faskes
+            </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-slate-subtle bg-surface-container-low px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              SLA: 10 Hari Kerja
+            </span>
+</div>
+<!-- Service Title -->
+<div>
+<h2 class="font-headline-md text-headline-md text-slate-body font-semibold group-hover:text-primary transition-colors">
+              Paket Uji Effluent IPAL Faskes &amp; RS
+            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Monitoring baku mutu pembuangan air limbah medis sesuai persyaratan kepatuhan izin lingkungan daerah.
+            </p>
+</div>
+<!-- Parameter Included Chips -->
+<div class="space-y-space-xs">
+<span class="font-label-sm text-label-sm text-slate-subtle uppercase tracking-wider block font-bold">Parameter Utama (Effluent):</span>
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">BOD5</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">COD</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">TSS</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Minyak &amp; Lemak</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Amonia Bebas (NH3-N)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Total Coliform</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Klorin Bebas</span>
+</div>
+</div>
+<!-- Sampling Requirements Box -->
+<div class="bg-surface-container-low p-space-sm rounded-xl space-y-space-xs font-body-sm text-body-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">science</span>
+<span><strong>Wadah:</strong> Jeriken HDPE 5 Liter (Gelap/Terlindung)</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">straighten</span>
+<span><strong>Vol. Minimal:</strong> 3.000 mL + Preservasi Asam Nitrat/H2SO4</span>
+</div>
+<div class="flex items-center gap-2 text-slate-subtle text-[12px]">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>Acuan: Permen LHK No. P.68/2016 &amp; Permenkes 7/2019</span>
+</div>
+</div>
+</div>
+<!-- Card Footer (Price & Action) -->
+<div class="p-space-lg pt-0 border-t border-border-hairline/60 mt-space-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-slate-subtle block">Tarif Resmi PNBP</span>
+<span class="font-headline-sm text-headline-sm text-slate-body font-bold text-teal-deep">Rp 680.000</span>
+</div>
+<button class="btn-toggle-select inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-xl font-label-md text-label-md font-semibold transition-all bg-primary-container text-on-primary hover:bg-teal-hover shadow-sm" onclick="toggleItemSelection(5)" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Tambah</span>
+</button>
+</div>
+</article>
+<!-- Kartu 6: Uji Resistensi Vektor Nyamuk -->
+<article class="service-card group bg-surface-container-lowest rounded-xl border border-border-hairline hover:border-border-strong hover:shadow-md transition-all flex flex-col justify-between" data-category="vektor-penyakit" data-id="6" data-keywords="vektor penyakit resistensi nyamuk malaria dbd anopheles aedes aegypti bioassay who" data-price="220000" data-sla="7" data-title="Uji Resistensi Vektor Nyamuk (Malaria &amp; DBD)">
+<div class="p-space-lg space-y-space-md">
+<!-- Card Header & Category Tag -->
+<div class="flex items-start justify-between gap-space-sm">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full font-label-sm text-label-sm bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
+<span class="material-symbols-outlined text-[14px]">pest_control</span>
+              Vektor Penyakit
+            </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-slate-subtle bg-surface-container-low px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              SLA: 7 Hari Kerja
+            </span>
+</div>
+<!-- Service Title -->
+<div>
+<h2 class="font-headline-md text-headline-md text-slate-body font-semibold group-hover:text-primary transition-colors">
+              Uji Bioassay Resistensi Insektisida Vektor
+            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Evaluasi efikasi dan resistensi populasi nyamuk Anopheles / Aedes aegypti terhadap senyawa organofosfat &amp; piretroid.
+            </p>
+</div>
+<!-- Parameter Included Chips -->
+<div class="space-y-space-xs">
+<span class="font-label-sm text-label-sm text-slate-subtle uppercase tracking-wider block font-bold">Parameter Uji Entomologi:</span>
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Susceptibility Test (WHO standard)</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Knockdown Time 50 &amp; 90</span>
+<span class="bg-surface-container-low text-slate-body px-2 py-0.5 rounded text-[11px] font-medium">Mortalitas 24 Jam</span>
+</div>
+</div>
+<!-- Sampling Requirements Box -->
+<div class="bg-surface-container-low p-space-sm rounded-xl space-y-space-xs font-body-sm text-body-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">science</span>
+<span><strong>Wadah:</strong> Tabung/Kandang Transportasi Khusus Nyamuk Hidup</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">straighten</span>
+<span><strong>Jumlah:</strong> Minimal 100 ekor nyamuk betina sehat (F1/lapangan)</span>
+</div>
+<div class="flex items-center gap-2 text-slate-subtle text-[12px]">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>Acuan: WHO Test Procedures for Insecticide Resistance</span>
+</div>
+</div>
+</div>
+<!-- Card Footer (Price & Action) -->
+<div class="p-space-lg pt-0 border-t border-border-hairline/60 mt-space-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-slate-subtle block">Tarif Resmi PNBP</span>
+<span class="font-headline-sm text-headline-sm text-slate-body font-bold text-teal-deep">Rp 220.000</span>
+</div>
+<button class="btn-toggle-select inline-flex items-center gap-1.5 px-space-md py-2.5 rounded-xl font-label-md text-label-md font-semibold transition-all bg-primary-container text-on-primary hover:bg-teal-hover shadow-sm" onclick="toggleItemSelection(6)" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Tambah</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Empty Search State Placeholder (hidden by default) -->
+<div class="hidden text-center py-space-xl px-space-md bg-surface-container-lowest rounded-xl border border-border-hairline my-space-lg" id="search-empty-state">
+<div class="w-16 h-16 rounded-full bg-teal-surface text-teal-deep mx-auto flex items-center justify-center mb-space-sm">
+<span class="material-symbols-outlined text-[32px]">manage_search</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-slate-body">Parameter Tidak Ditemukan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mt-1">
+        Parameter yang Anda cari belum tercantum di kartu cepat. Anda dapat menghubungi loket konsultasi teknis atau mencari kata kunci lain.
+      </p>
+<button class="mt-space-md px-space-md py-2 bg-surface-container text-on-surface rounded-xl font-label-md text-label-md hover:bg-surface-container-high transition-colors" onclick="resetAllFilters()" type="button">
+        Tampilkan Semua Paket
+      </button>
+</div>
+<!-- FAQ & Information Strip -->
+<div class="mt-space-xl grid grid-cols-1 md:grid-cols-3 gap-space-md text-on-surface">
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-border-hairline flex gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[28px] shrink-0">payments</span>
+<div class="space-y-1">
+<h4 class="font-headline-sm text-headline-sm font-semibold">Pembayaran Non-Tunai</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Seluruh transaksi diterbitkan melalui Virtual Account (VA) resmi Bank Kas Negara / SIMPONI Kemenkeu RI.
+          </p>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-border-hairline flex gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[28px] shrink-0">inventory_2</span>
+<div class="space-y-1">
+<h4 class="font-headline-sm text-headline-sm font-semibold">Penyediaan Wadah Steril</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Wadah botol thiosulfat dan cawan papar khusus dapat diambil langsung di Loket Pengambilan Wadah Balai Ambon.
+          </p>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-border-hairline flex gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[28px] shrink-0">speed</span>
+<div class="space-y-1">
+<h4 class="font-headline-sm text-headline-sm font-semibold">Perhitungan SLA Uji</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Hari kerja dihitung sejak sampel dinyatakan memenuhi syarat administratif serta konfirmasi pembayaran berhasil diverifikasi.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky Bottom Calculation Bar (Level 3 Elevation) -->
+<aside class="fixed bottom-0 inset-x-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md border-t border-border-hairline shadow-[0_-8px_25px_rgba(15,23,42,0.08)] py-space-sm px-gutter" id="sticky-cost-bar">
+<div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<!-- Left: Summary Details -->
+<div class="flex items-center gap-space-md w-full sm:w-auto justify-between sm:justify-start">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-teal-surface text-teal-deep flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">calculate</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-slate-body font-bold" id="selected-count-badge">0</span>
+<span class="font-label-md text-label-md text-slate-body">Parameter Dipilih</span>
+<span class="hidden md:inline text-outline-variant">|</span>
+<span class="hidden md:inline font-label-sm text-label-sm text-slate-subtle bg-surface-container-low px-2 py-0.5 rounded" id="sla-summary">
+                Estimasi Waktu: -
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtle">
+              Harga bersifat final sesuai PNBP Resmi Kemenkes RI (bebas PPN).
+            </p>
+</div>
+</div>
+<button class="font-label-sm text-label-sm text-rejection-red hover:text-rejection-red/80 hover:underline inline-flex items-center gap-1 font-semibold cursor-pointer" id="btn-reset-selection" onclick="resetSelection()" type="button">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+          Reset
+        </button>
+</div>
+<!-- Right: Total Cost & Action Callout -->
+<div class="flex items-center justify-between w-full sm:w-auto gap-space-lg">
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-slate-subtle uppercase tracking-wider block">Total Estimasi Tarif:</span>
+<span class="font-headline-lg text-headline-lg text-teal-deep font-bold leading-tight" id="total-price-display">
+            Rp 0
+          </span>
+</div>
+<div class="flex items-center gap-space-sm">
+<a class="inline-flex items-center justify-center gap-space-xs bg-primary-container text-on-primary hover:bg-teal-hover px-space-lg py-3 rounded-xl font-label-md text-label-md font-semibold transition-all shadow-md group shrink-0" data-path="pendaftaran-fpps" href="#" id="btn-proceed-fpps">
+<span>Lanjut ke Formulir FPPS Online</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<!-- Client-side Interactive Behavior -->
+<script>
+    // State management for selected test packages
+    const catalogData = {
+      1: { id: 1, title: "Paket Lengkap Air Bersih", price: 503000, sla: 8, category: "air-bersih" },
+      2: { id: 2, title: "Paket Kualitas Mikrobiologi Air Minum", price: 150000, sla: 5, category: "air-minum" },
+      3: { id: 3, title: "Uji Cemaran Pangan & Makanan", price: 340000, sla: 6, category: "makanan-minuman" },
+      4: { id: 4, title: "Uji Bakteriologi Udara Ruang Operasi", price: 275000, sla: 5, category: "bakteriologi-udara" },
+      5: { id: 5, title: "Uji Limbah Cair Faskes / Rumah Sakit", price: 680000, sla: 10, category: "air-limbah-faskes" },
+      6: { id: 6, title: "Uji Resistensi Vektor Nyamuk", price: 220000, sla: 7, category: "vektor-penyakit" }
+    };
+
+    let selectedIds = new Set([1, 2, 3]); // Initial demo state: 3 items selected per prompt specification
+
+    function formatRupiah(number) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+    }
+
+    function updateSimulationUI() {
+      const count = selectedIds.size;
+      let totalPrice = 0;
+      let maxSla = 0;
+
+      selectedIds.forEach(id => {
+        if (catalogData[id]) {
+          totalPrice += catalogData[id].price;
+          if (catalogData[id].sla > maxSla) {
+            maxSla = catalogData[id].sla;
+          }
+        }
+      });
+
+      // Update Top Badges & Bottom bar counters
+      const countBadge = document.getElementById('selected-count-badge');
+      const priceDisplay = document.getElementById('total-price-display');
+      const slaSummary = document.getElementById('sla-summary');
+      const proceedBtn = document.getElementById('btn-proceed-fpps');
+
+      if (countBadge) countBadge.textContent = count;
+      if (priceDisplay) priceDisplay.textContent = formatRupiah(totalPrice);
+      if (slaSummary) {
+        slaSummary.textContent = count > 0 ? `Estimasi Waktu: ${maxSla} Hari Kerja` : 'Estimasi Waktu: -';
+      }
+
+      // Update each article card toggle button
+      document.querySelectorAll('.service-card').forEach(card => {
+        const id = parseInt(card.getAttribute('data-id'), 10);
+        const btn = card.querySelector('.btn-toggle-select');
+        if (!btn) return;
+
+        if (selectedIds.has(id)) {
+          card.classList.add('ring-2', 'ring-teal-deep', 'bg-teal-surface/20');
+          btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>Terpilih</span>';
+          btn.classList.remove('bg-primary-container', 'text-on-primary', 'hover:bg-teal-hover');
+          btn.classList.add('bg-teal-deep', 'text-on-primary');
+        } else {
+          card.classList.remove('ring-2', 'ring-teal-deep', 'bg-teal-surface/20');
+          btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span><span>+ Tambah</span>';
+          btn.classList.add('bg-primary-container', 'text-on-primary', 'hover:bg-teal-hover');
+          btn.classList.remove('bg-teal-deep');
+        }
+      });
+
+      // Enable/disable proceed button based on selection
+      if (proceedBtn) {
+        if (count === 0) {
+          proceedBtn.classList.add('opacity-50', 'pointer-events-none');
+        } else {
+          proceedBtn.classList.remove('opacity-50', 'pointer-events-none');
+        }
+      }
+    }
+
+    function toggleItemSelection(id) {
+      if (selectedIds.has(id)) {
+        selectedIds.delete(id);
+      } else {
+        selectedIds.add(id);
+      }
+      updateSimulationUI();
+    }
+
+    function resetSelection() {
+      selectedIds.clear();
+      updateSimulationUI();
+    }
+
+    // Category and Parameter Filter Logic
+    let activeCategory = 'semua';
+    let searchQuery = '';
+
+    function filterCards() {
+      const cards = document.querySelectorAll('.service-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        const cardKeywords = (card.getAttribute('data-keywords') + ' ' + card.getAttribute('data-title')).toLowerCase();
+
+        const matchesCategory = (activeCategory === 'semua' || cardCategory === activeCategory);
+        const matchesSearch = !searchQuery || cardKeywords.includes(searchQuery.toLowerCase().trim());
+
+        if (matchesCategory && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      const emptyState = document.getElementById('search-empty-state');
+      const counterText = document.getElementById('search-counter');
+
+      if (visibleCount === 0) {
+        if (emptyState) emptyState.classList.remove('hidden');
+      } else {
+        if (emptyState) emptyState.classList.add('hidden');
+      }
+
+      if (counterText) {
+        counterText.textContent = `Menampilkan ${visibleCount} Paket Layanan`;
+      }
+    }
+
+    function resetAllFilters() {
+      activeCategory = 'semua';
+      searchQuery = '';
+      const searchInput = document.getElementById('parameter-search-input');
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (searchInput) searchInput.value = '';
+      if (clearBtn) clearBtn.classList.add('hidden');
+
+      // Update pill classes
+      document.querySelectorAll('.category-pill').forEach(pill => {
+        pill.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm', 'active');
+        pill.classList.add('bg-surface-container-lowest', 'text-slate-body');
+        if (pill.getAttribute('data-category') === 'semua') {
+          pill.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm', 'active');
+          pill.classList.remove('bg-surface-container-lowest', 'text-slate-body');
+        }
+      });
+
+      filterCards();
+    }
+
+    // Initialize Event Listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initial State Sync
+      updateSimulationUI();
+
+      // 2. Search Box handling
+      const searchInput = document.getElementById('parameter-search-input');
+      const clearSearchBtn = document.getElementById('clear-search-btn');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          if (searchQuery.length > 0) {
+            clearSearchBtn.classList.remove('hidden');
+          } else {
+            clearSearchBtn.classList.add('hidden');
+          }
+          filterCards();
+        });
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          searchQuery = '';
+          clearSearchBtn.classList.add('hidden');
+          filterCards();
+        });
+      }
+
+      // 3. Category Pills handling
+      const pills = document.querySelectorAll('.category-pill');
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          pills.forEach(p => {
+            p.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm', 'active');
+            p.classList.add('bg-surface-container-lowest', 'text-slate-body');
+          });
+
+          pill.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm', 'active');
+          pill.classList.remove('bg-surface-container-lowest', 'text-slate-body');
+
+          activeCategory = pill.getAttribute('data-category');
+          filterCards();
+        });
+      });
+
+      // 4. Quick Reset Filter Button
+      const btnResetFilter = document.getElementById('btn-filter-all');
+      if (btnResetFilter) {
+        btnResetFilter.addEventListener('click', resetAllFilters);
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-7xl mx-auto px-gutter py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-lg pb-space-xl"><div class="space-y-space-md"><div class="flex items-center gap-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">chips</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary">Balai Labkesmas Ambon</span><span class="font-label-sm text-label-sm text-slate-subtle">Ditjen Kesmas, Kemenkes RI</span></div></div><p class="font-body-sm text-body-sm text-on-surface-variant">Pusat Pengujian Laboratorium Kesehatan Masyarakat dan Lingkungan Terakreditasi Nasional untuk Wilayah Maluku dan Indonesia Bagian Timur.</p><div class="inline-flex items-center gap-space-xs bg-teal-surface px-space-sm py-space-xs rounded-xl"><span class="material-symbols-outlined text-primary text-[18px]">verified</span><span class="font-label-sm text-label-sm text-primary font-bold">Akreditasi KAN ISO/IEC 17025:2017</span></div></div><div class="space-y-space-sm"><h3 class="font-headline-sm text-headline-sm text-on-surface">Alamat &amp; Kontak</h3><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Jl. Dr. Kayadoe, Kudamati, Kec. Nusaniwe, Kota Ambon, Maluku 97116</p><div class="pt-space-xs space-y-space-xs"><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-primary text-[18px]">support_agent</span><span>Helpdesk: (0911) 341234</span></div><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-verified-green text-[18px]">chat</span><span>WhatsApp: 0812-4040-5678</span></div><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-sky-progress text-[18px]">mail</span><span>labkesmas.ambon@kemkes.go.id</span></div></div></div><div class="space-y-space-sm"><h3 class="font-headline-sm text-headline-sm text-on-surface">Jam Pelayanan Loket</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><div class="bg-surface-container-lowest p-space-sm rounded-xl space-y-space-xs"><span class="font-label-sm text-label-sm text-on-surface font-semibold block">Senin - Kamis</span><span class="block text-primary font-label-md text-label-md">08.00 - 15.00 WIT</span></div><div class="bg-surface-container-lowest p-space-sm rounded-xl space-y-space-xs"><span class="font-label-sm text-label-sm text-on-surface font-semibold block">Jumat</span><span class="block text-primary font-label-md text-label-md">08.00 - 15.30 WIT</span></div><p class="font-label-sm text-label-sm text-slate-subtle pt-space-xs">*Sabtu, Minggu &amp; Hari Libur Nasional Loket Registrasi Tutup.</p></div></div><div class="space-y-space-sm"><h3 class="font-headline-sm text-headline-sm text-on-surface">Regulasi &amp; Mutu</h3><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors flex items-center gap-space-xs" data-path="katalog-dan-tarif" href="#"><span class="material-symbols-outlined text-[16px]">chevron_right</span>Standar Baku Mutu Kesling</a></li><li><a class="hover:text-primary transition-colors flex items-center gap-space-xs" data-path="verifikasi-lhu" href="#"><span class="material-symbols-outlined text-[16px]">chevron_right</span>Validasi Sertifikat Digital LHU</a></li><li><a class="hover:text-primary transition-colors flex items-center gap-space-xs" data-path="pendaftaran-fpps" href="#"><span class="material-symbols-outlined text-[16px]">chevron_right</span>Pedoman Pengambilan Sampel</a></li><li><a class="hover:text-primary transition-colors flex items-center gap-space-xs" data-path="kontak-dan-loket" href="#"><span class="material-symbols-outlined text-[16px]">chevron_right</span>Kompensasi Hak Pelanggan</a></li></ul></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-slate-subtle font-label-sm text-label-sm"><p>© 2025 Balai Laboratorium Kesehatan Masyarakat Ambon. Kementerian Kesehatan Republik Indonesia.</p><p>Sistem Pengujian Terstandar ISO/IEC 17025:2017</p></div></div></footer></body></html>
