@@ -10,6 +10,8 @@ use App\Models\SampleReceipt;
 use App\Models\ServiceGroup;
 use App\Models\TestReport;
 use App\Models\TestRequest;
+use App\Services\Export\Excel\OperationalReportExcelExporter;
+use App\Services\Export\Pdf\OperationalReportPdfGenerator;
 use BackedEnum;
 use Filament\Pages\Page;
 use Filament\Support\Icons\Heroicon;
@@ -104,6 +106,28 @@ class OperationalReports extends Page
     public function filter(): void
     {
         // Livewire updates automatically
+    }
+
+    /**
+     * Ekspor seluruh data operasional ke berkas Excel (.xlsx).
+     */
+    public function exportExcel(): mixed
+    {
+        return OperationalReportExcelExporter::export(
+            $this->startDate,
+            $this->endDate
+        );
+    }
+
+    /**
+     * Ekspor ringkasan eksekutif ke berkas PDF resmi (.pdf).
+     */
+    public function exportPdf(): mixed
+    {
+        return OperationalReportPdfGenerator::download(
+            $this->startDate,
+            $this->endDate
+        );
     }
 
     /**

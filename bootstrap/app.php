@@ -15,6 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->redirectTo(
+            guests: fn (Request $request) => $request->is('admin/*') ? route('filament.admin.auth.login') : route('customer.login')
+        );
+
         $middleware->alias([
             'role' => RoleMiddleware::class,
             'permission' => PermissionMiddleware::class,

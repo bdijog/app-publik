@@ -6,6 +6,7 @@ use App\Models\Employee;
 use BezhanSalleh\LanguageSwitch\LanguageSwitch;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
                     'en' => 'English',
                 ])
                 ->visible(outsidePanels: true);
+        });
+
+        Gate::before(function ($user, $ability) {
+            return $user instanceof Employee && $user->hasRole('admin') ? true : null;
         });
 
         Event::listen(Login::class, function (Login $event): void {

@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\TestJobs\Tables;
 
 use App\Enums\TestJobStatus;
+use App\Models\TestJob;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -99,6 +101,12 @@ class TestJobsTable
                     ]),
             ])
             ->recordActions([
+                Action::make('printSpk')
+                    ->label('Cetak SPK')
+                    ->icon('heroicon-o-printer')
+                    ->color('info')
+                    ->url(fn (TestJob $record): string => route('jobs.spk.print', $record))
+                    ->openUrlInNewTab(),
                 EditAction::make(),
                 DeleteAction::make(),
             ])

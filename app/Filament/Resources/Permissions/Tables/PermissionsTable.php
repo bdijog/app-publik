@@ -33,7 +33,7 @@ class PermissionsTable
                     ->label(__('Module Cluster'))
                     ->state(fn (Permission $record): string => PermissionEnum::tryFrom($record->name)?->group() ?? 'Lainnya')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn ($state): string => match ((string) $state) {
                         'Dashboard & Analitik' => 'info',
                         'Pengguna & Hak Akses' => 'danger',
                         'Katalog & Konfigurasi Layanan' => 'gray',

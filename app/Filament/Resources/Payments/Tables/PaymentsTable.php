@@ -3,10 +3,13 @@
 namespace App\Filament\Resources\Payments\Tables;
 
 use App\Enums\PaymentStatus;
+use App\Models\Payment;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -76,6 +79,12 @@ class PaymentsTable
                     ]),
             ])
             ->recordActions([
+                Action::make('print_receipt')
+                    ->label(__('Cetak Kuitansi'))
+                    ->icon(Heroicon::OutlinedPrinter)
+                    ->color('info')
+                    ->url(fn (Payment $record): string => route('payments.receipt.print', $record))
+                    ->openUrlInNewTab(),
                 EditAction::make(),
                 DeleteAction::make(),
             ])

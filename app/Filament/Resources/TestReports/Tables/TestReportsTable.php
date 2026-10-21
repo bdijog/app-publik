@@ -5,6 +5,7 @@ namespace App\Filament\Resources\TestReports\Tables;
 use App\Enums\ReportStatus;
 use App\Models\ReportHandover;
 use App\Models\TestReport;
+use App\Services\Export\Pdf\TestReportPdfGenerator;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
@@ -108,8 +109,9 @@ class TestReportsTable
                             'validated_on' => $data['validated_on'],
                             'issued_by' => auth()->id(),
                             'issued_at' => now(),
-                            'file_path' => 'reports/'.str_replace('/', '_', $record->report_number).'.pdf',
                         ]);
+
+                        TestReportPdfGenerator::generateAndSave($record);
 
                         if ($record->testRequest) {
                             $record->testRequest->update(['status' => 'completed']);
@@ -188,6 +190,26 @@ class TestReportsTable
                             ->success()
                             ->send();
                     }),
+
+                Action::make('download_pdf')
+                    ->label(__('Unduh LHU PDF'))
+                    ->icon(Heroicon::OutlinedArrowDownTray)
+                    ->color('success')
+                    ->visible(fn (TestReport $record): bool => $record->status === ReportStatus::Final)
+                    ->action(function (TestReport $record) {
+                        return TestReportPdfGenerator::download(
+                            $record,
+                            employee: auth('employee')->user()
+                        );
+                    }),
+
+                Action::make('print_pdf')
+                    ->label(__('Cetak LHU'))
+                    ->icon(Heroicon::OutlinedPrinter)
+                    ->color('info')
+                    ->visible(fn (TestReport $record): bool => $record->status === ReportStatus::Final)
+                    ->url(fn (TestReport $record): string => route('reports.lhu.print', $record))
+                    ->openUrlInNewTab(),
 
                 ViewAction::make(),
                 EditAction::make(),

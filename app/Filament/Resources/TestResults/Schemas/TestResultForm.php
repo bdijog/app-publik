@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\TestResults\Schemas;
 
+use App\Models\TestJob;
+use App\Models\TestRequestParameter;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -9,6 +11,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 
 class TestResultForm
@@ -26,13 +30,53 @@ class TestResultForm
                                 ->relationship('testJob', 'job_number')
                                 ->searchable()
                                 ->preload()
+                                ->live()
+                                ->afterStateUpdated(function ($state, Set $set) {
+                                    if ($state) {
+                                        $job = TestJob::find($state);
+                                        if ($job && $job->assigned_to) {
+                                            $set('analyst_id', $job->assigned_to);
+                                        }
+                                    }
+                                })
                                 ->required(),
 
                             Select::make('test_request_parameter_id')
                                 ->label(__('Testing Parameter'))
-                                ->relationship('testRequestParameter.testParameter', 'name')
+                                ->options(function (Get $get) {
+                                    $jobId = $get('test_job_id');
+                                    if (! $jobId) {
+                                        return TestRequestParameter::with('testParameter')
+                                            ->get()
+                                            ->mapWithKeys(fn ($p) => [$p->id => $p->testParameter?->name ?? "Parameter #{$p->id}"])
+                                            ->toArray();
+                                    }
+
+                                    $job = TestJob::with('sample.testRequest.parameters.testParameter')->find($jobId);
+                                    if (! $job?->sample?->testRequest) {
+                                        return [];
+                                    }
+
+                                    return $job->sample->testRequest->parameters->mapWithKeys(function ($trp) {
+                                        return [$trp->id => $trp->testParameter?->name ?? "Parameter #{$trp->id}"];
+                                    })->toArray();
+                                })
                                 ->searchable()
                                 ->preload()
+                                ->live()
+                                ->afterStateUpdated(function ($state, Set $set) {
+                                    if ($state) {
+                                        $trp = TestRequestParameter::with('testParameter')->find($state);
+                                        if ($trp && $trp->testParameter) {
+                                            if ($trp->testParameter->unit) {
+                                                $set('unit', $trp->testParameter->unit);
+                                            }
+                                            if ($trp->testParameter->method) {
+                                                $set('method', $trp->testParameter->method);
+                                            }
+                                        }
+                                    }
+                                })
                                 ->required(),
 
                             Select::make('analyst_id')

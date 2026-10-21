@@ -5,10 +5,13 @@ namespace App\Filament\Resources\TestRequests\Tables;
 use App\Enums\PaymentStatus;
 use App\Enums\RegistrationChannel;
 use App\Enums\TestRequestStatus;
+use App\Models\TestRequest;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -151,6 +154,12 @@ class TestRequestsTable
                     ]),
             ])
             ->recordActions([
+                Action::make('print_receipt')
+                    ->label(__('Cetak FPPS'))
+                    ->icon(Heroicon::OutlinedPrinter)
+                    ->color('info')
+                    ->url(fn (TestRequest $record): string => route('requests.receipt.print', $record))
+                    ->openUrlInNewTab(),
                 ViewAction::make(),
                 EditAction::make(),
             ])

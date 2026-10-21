@@ -19,7 +19,7 @@ class RolesTable
             ->columns([
                 TextColumn::make('name')
                     ->label(__('Role Name & Code'))
-                    ->formatStateUsing(fn (string $state): string => RoleEnum::tryFrom($state)?->label() ?? $state)
+                    ->formatStateUsing(fn ($state): string => RoleEnum::tryFrom((string) $state)?->label() ?? (string) $state)
                     ->description(function (Role $record): string {
                         $enum = RoleEnum::tryFrom($record->name);
 

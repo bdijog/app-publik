@@ -181,6 +181,14 @@ class SamplesTable
                             ->send();
                     }),
 
+                Action::make('print_rejection_bap')
+                    ->label(__('Cetak BAP Tolak'))
+                    ->icon(Heroicon::OutlinedDocumentText)
+                    ->color('danger')
+                    ->visible(fn (Sample $record): bool => ($record->status === SampleStatus::Rejected || $record->status?->value === 'rejected') && $record->latestReceipt !== null)
+                    ->url(fn (Sample $record): string => route('samples.receipt.bap', $record->latestReceipt))
+                    ->openUrlInNewTab(),
+
                 EditAction::make(),
                 DeleteAction::make(),
             ])

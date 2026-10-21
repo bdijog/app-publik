@@ -702,14 +702,30 @@
 
     {{-- Official Print Letterhead (Only visible during window.print()) --}}
     <div class="op-print-header">
-        <h2 style="font-size: 14pt; font-weight: 700; text-transform: uppercase; margin: 0;">Kementerian Kesehatan Republik Indonesia</h2>
-        <h1 style="font-size: 16pt; font-weight: 900; text-transform: uppercase; margin: 4px 0;">Balai Laboratorium Kesehatan Masyarakat Ambon</h1>
-        <p style="font-size: 9pt; color: #444; margin: 0 0 10px 0;">Jl. dr. Kayadoe, Kudamati, Kec. Nusaniwe, Kota Ambon, Maluku | Akreditasi KAN ISO/IEC 17025:2017</p>
-        <div style="border-top: 1px solid #000; padding-top: 8px; margin-top: 6px;">
-            <h3 style="font-size: 11pt; font-weight: 700; text-transform: uppercase; margin: 0;">Laporan Eksekutif Rekapitulasi Operasional Layanan Laboratorium</h3>
-            <p style="font-size: 9pt; margin: 4px 0 0 0;">
-                Periode: <strong>{{ $startDateCarbon->translatedFormat('d F Y') }}</strong> s/d <strong>{{ $endDateCarbon->translatedFormat('d F Y') }}</strong>
-                | Dicetak: {{ now()->translatedFormat('d F Y, H:i') }} WIT
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 8px;">
+            <tr>
+                <td style="width: 18%; vertical-align: middle; text-align: left;">
+                    <img src="{{ asset('images/logo-labkesmas-ambon.png') }}" alt="Logo Kemenkes Labkesmas Ambon" style="max-height: 52px; width: auto;">
+                </td>
+                <td style="width: 67%; vertical-align: middle; text-align: center;">
+                    <h2 style="font-size: 12pt; font-weight: 700; text-transform: uppercase; margin: 0; color: #1e293b;">Kementerian Kesehatan Republik Indonesia</h2>
+                    <h1 style="font-size: 14pt; font-weight: 900; text-transform: uppercase; margin: 3px 0; color: #0f172a;">Balai Laboratorium Kesehatan Masyarakat Ambon</h1>
+                    <p style="font-size: 8.5pt; color: #475569; margin: 0;">Jl. dr. Kayadoe, Kudamati, Kec. Nusaniwe, Kota Ambon, Maluku 97116 | labkesmas.ambon@kemkes.go.id</p>
+                </td>
+                <td style="width: 15%; vertical-align: middle; text-align: right;">
+                    <div style="border: 1.5px solid #0f766e; padding: 4px 6px; display: inline-block; text-align: center; border-radius: 4px;">
+                        <span style="font-size: 8pt; font-weight: bold; color: #0f766e; display: block;">KAN</span>
+                        <span style="font-size: 7pt; color: #334155; font-weight: 600;">LP-892-IDN</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div style="border-top: 2.5px solid #0f172a; border-bottom: 0.75px solid #0f172a; height: 3px; margin: 4px 0 12px 0;"></div>
+        <div style="text-align: center; margin-bottom: 8px;">
+            <h3 style="font-size: 11pt; font-weight: 800; text-transform: uppercase; margin: 0; color: #0f172a;">Laporan Eksekutif Rekapitulasi Operasional Layanan Laboratorium</h3>
+            <p style="font-size: 8.5pt; color: #475569; margin: 3px 0 0 0;">
+                Periode Analisis: <strong>{{ $startDateCarbon->translatedFormat('d F Y') }}</strong> s/d <strong>{{ $endDateCarbon->translatedFormat('d F Y') }}</strong>
+                &bull; Dicetak: {{ now()->translatedFormat('d F Y, H:i') }} WIT
             </p>
         </div>
     </div>
@@ -722,21 +738,43 @@
 
             {{-- Top Header Row --}}
             <div class="op-header-row">
-                <div>
-                    <div class="op-tag-badge">
-                        <span class="op-pulse-dot"></span>
-                        <span>Balai Labkesmas Ambon • Real-Time Analytics</span>
+                <div class="flex items-center gap-4">
+                    <img src="{{ asset('images/logo-labkesmas-icon.png') }}" alt="Logo" class="w-12 h-12 object-contain hidden sm:block p-1 bg-teal-50 dark:bg-teal-950/40 rounded-xl border border-teal-200 dark:border-teal-800 shrink-0">
+                    <div>
+                        <div class="op-tag-badge">
+                            <span class="op-pulse-dot"></span>
+                            <span>Balai Labkesmas Ambon • Real-Time Analytics</span>
+                        </div>
+                        <h2 class="op-header-title">Rekapitulasi Operasional & Kinerja Layanan</h2>
+                        <p class="op-header-subtitle">Monitoring berkas permohonan, penyerapan PNBP, kepatuhan SLA SPM Kemenkes, serta penjaminan mutu sampel lab.</p>
                     </div>
-                    <h2 class="op-header-title">Rekapitulasi Operasional & Kinerja Layanan</h2>
-                    <p class="op-header-subtitle">Monitoring berkas permohonan, penyerapan PNBP, kepatuhan SLA SPM Kemenkes, serta penjaminan mutu sampel lab.</p>
                 </div>
 
                 <div class="op-action-group">
-                    <button type="button" onclick="window.print()" class="op-btn op-btn-white" title="Cetak atau simpan sebagai dokumen PDF">
+                    {{-- Tombol Ekspor Excel --}}
+                    <button type="button" wire:click="exportExcel" wire:loading.attr="disabled" class="op-btn op-btn-white" style="border-color: #059669; color: #065f46;" title="Ekspor laporan multi-sheet ke format Microsoft Excel (.xlsx)">
+                        <svg class="op-ic-sm text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span wire:loading.remove wire:target="exportExcel">Ekspor Excel (.xlsx)</span>
+                        <span wire:loading wire:target="exportExcel">Menyiapkan...</span>
+                    </button>
+
+                    {{-- Tombol Unduh Ringkasan PDF --}}
+                    <button type="button" wire:click="exportPdf" wire:loading.attr="disabled" class="op-btn op-btn-white" style="border-color: #dc2626; color: #991b1b;" title="Unduh dokumen resmi ringkasan eksekutif ke format PDF (.pdf)">
+                        <svg class="op-ic-sm text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                        <span wire:loading.remove wire:target="exportPdf">Unduh PDF (.pdf)</span>
+                        <span wire:loading wire:target="exportPdf">Merender...</span>
+                    </button>
+
+                    {{-- Tombol Cetak Browser --}}
+                    <button type="button" onclick="window.print()" class="op-btn op-btn-white" title="Cetak langsung melalui dialog printer browser">
                         <svg class="op-ic-sm text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
                         </svg>
-                        <span>Cetak / PDF</span>
+                        <span>Cetak Layar</span>
                     </button>
 
                     <button type="button" wire:click="setPreset('this_month')" class="op-btn op-btn-teal" title="Kembali ke rentang bulan berjalan">

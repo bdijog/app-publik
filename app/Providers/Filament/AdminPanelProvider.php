@@ -30,6 +30,10 @@ class AdminPanelProvider extends PanelProvider
             ->authGuard('employee')
             ->authPasswordBroker('employees')
             ->brandName('Balai Labkesmas Ambon')
+            ->brandLogo(asset('images/logo-labkesmas-ambon.png'))
+            ->darkModeBrandLogo(asset('images/logo-labkesmas-ambon-dark.png'))
+            ->brandLogoHeight('2.35rem')
+            ->favicon(asset('images/logo-labkesmas-icon.png'))
             ->colors([
                 'primary' => Color::Teal,
             ])
@@ -55,7 +59,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                AccountWidget::class,
+                // AccountWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

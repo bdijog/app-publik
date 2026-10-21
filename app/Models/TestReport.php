@@ -104,8 +104,18 @@ class TestReport extends Model
         return $this->hasMany(ReportHandover::class);
     }
 
+    public function reportHandovers(): HasMany
+    {
+        return $this->handovers();
+    }
+
     public function accessLogs(): HasMany
     {
         return $this->hasMany(DocumentAccessLog::class);
+    }
+
+    public function documentAccessLogs(): HasMany
+    {
+        return $this->accessLogs();
     }
 }
